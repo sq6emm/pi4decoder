@@ -54,10 +54,10 @@ static void print_result(const pi4_result *r, double boundary_s)
     printf("{\"text\": "); json_str(r->text);
     printf(", \"variant\": \"%s\", \"tone0_hz\": %.2f, \"dt_s\": %.3f, \"t_s\": %.3f, \"snr_db\": %.1f, "
            "\"fit\": %.3f, \"fit_z\": %.1f, \"sync_z\": %.1f, \"hard_errors\": %d, \"spread_hz\": %.1f, "
-           "\"plausible\": %s, \"listed\": %s}\n",
+           "\"plausible\": %s, \"listed\": %s, \"edge\": %s}\n",
            pi4_variant_name(r->variant), r->tone0_hz, r->t_s - boundary_s, r->t_s, r->snr_db,
            r->fit, r->fit_z, r->sync_z, r->hard_errors, r->spread_hz,
-           r->plausible ? "true" : "false", r->listed ? "true" : "false");
+           r->plausible ? "true" : "false", r->listed ? "true" : "false", r->edge ? "true" : "false");
 }
 
 int main(int argc, char **argv)

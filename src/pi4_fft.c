@@ -18,14 +18,14 @@ int pi4_fft_init(pi4_fft *f, int n)
     int i, j, k;
     f->n = n;
     f->tw = (float *)malloc(sizeof(float) * (size_t)n);      /* cos,sin pairs for n/2 */
-    f->tw2 = (float *)malloc(sizeof(float) * (size_t)n * 2);  /* for the real split */
+    f->tw2 = (float *)malloc(sizeof(float) * (size_t)(n + 1) * 2);  /* real split, k = 0..n */
     f->rev = (uint16_t *)malloc(sizeof(uint16_t) * (size_t)n);
     if (!f->tw || !f->tw2 || !f->rev) return -1;
     for (i = 0; i < n / 2; i++) {
         f->tw[2 * i] = (float)cos(2 * M_PI * i / n);
         f->tw[2 * i + 1] = (float)-sin(2 * M_PI * i / n);
     }
-    for (i = 0; i < n; i++) {
+    for (i = 0; i <= n; i++) {                                 /* k = n (Nyquist) is read too */
         f->tw2[2 * i] = (float)cos(M_PI * i / n);
         f->tw2[2 * i + 1] = (float)-sin(M_PI * i / n);
     }

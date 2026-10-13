@@ -117,6 +117,17 @@ static void band_for(const pi4_params *p, double *fmin, double *fmax, int *bt0, 
     *bt0 = (int)floor(tlo / BIN_HZ); *bt1 = (int)ceil(thi / BIN_HZ) + 1;
 }
 
+/* 1 when tone 0 lies outside the requested search band of this variant (by
+ * more than half a bin): a signal caught at the band edge and re-centred.
+ * It is kept and flagged, not dropped. */
+static int outside_band(const pi4_params *p, pi4_variant v, double f0)
+{
+    double sp = pi4_spacing_hz(v), lo, hi;
+    if (p->fmax_hz > p->fmin_hz) { lo = p->fmin_hz; hi = p->fmax_hz; }
+    else { lo = p->center_hz - sp / 2 - p->radius_hz; hi = p->center_hz - sp / 2 + p->radius_hz; }
+    return f0 < lo - BIN_HZ / 2 || f0 > hi + BIN_HZ / 2;
+}
+
 static int cmp_float(const void *a, const void *b)
 {
     float x = *(const float *)a, y = *(const float *)b;
@@ -715,7 +726,7 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
         double f0 = (s->b0 + c->b + c->db) * BIN_HZ;
         double t0 = (s->h0 + c->h + c->dh) * HOP;      /* samples */
         soft sf; attempt a; pi4_result r; uint8_t tones[PI4_NSYM];
-        int exact, wbest = c->w, k; double zbest;
+        int exact, wbest = c->w, k, d0 = 0, d1 = 0; double zbest;
         /* a cell inside the region of an already strong decode is that signal */
         for (k = 0; k < nres; k++) {
             double dsp = pi4_spacing_hz(res[k].variant);
@@ -725,16 +736,40 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
         if (k < nres) continue;
         tried++;
         zbest = -1e30;
-        if (c->call < 0) {
-            /* choose the spread window: largest self-normalised sync statistic */
-            int wi;
-            for (wi = 0; wi < nspread; wi++) {
-                double zz;
-                if (pi4_spread_bins[wi] >= spb) break;
-                spec_powers_w(s, c->h, c->b, spb, pi4_spread_bins[wi], pw);
-                zz = sync_stat(pw);
-                if (zz > zbest) { zbest = zz; wbest = wi; }
+        {
+            /* At the edge of the search grid a wide window catches a signal just
+             * outside the band with its skirt; left at the edge cell it would
+             * report tone 0 up to half a window off, a false spread and a
+             * noise-inflated S/N. There tone 0 is re-centred over every bin the
+             * candidate's own window reached (blind and listed candidates alike:
+             * sync_stat does not depend on the message). Inside the grid every
+             * centre was already searched for that window: nothing moves. */
+            int r0 = pi4_spread_bins[c->w] / 2, g0, g1;
+            double fmin_, fmax_;
+            band_for(p, &fmin_, &fmax_, &g0, &g1);
+            g0 -= s->b0; g1 -= s->b0;                          /* the grid search_cells used */
+            if (g0 < r0 + 1) g0 = r0 + 1;
+            if (g1 > s->nb - 3 * spb - r0) g1 = s->nb - 3 * spb - r0;
+            if (c->b - g0 < r0) d0 = -r0;
+            if (g1 - 1 - c->b < r0) d1 = r0;
+        }
+        if (c->call < 0 || d0 != 0 || d1 != 0) {
+            /* choose the spread window (largest self-normalised sync statistic),
+             * at a grid edge jointly with tone 0 */
+            int wi, db, bbest = c->b;
+            for (db = d0; db <= d1; db++) {
+                int bb = c->b + db;
+                if (bb < 0 || bb + 3 * spb >= s->nb) continue;
+                for (wi = 0; wi < nspread; wi++) {
+                    double zz;
+                    if (pi4_spread_bins[wi] >= spb) break;
+                    spec_powers_w(s, c->h, bb, spb, pi4_spread_bins[wi], pw);
+                    zz = sync_stat(pw);
+                    if (zz > zbest) { zbest = zz; wbest = wi; bbest = bb; }
+                }
             }
+            /* the old cell's sub-bin offset means nothing at the new one */
+            if (bbest != c->b) { c->b = bbest; c->db = 0; f0 = (s->b0 + c->b) * BIN_HZ; }
         }
         /* a narrow winner (1 or 3 bins) is refined on the time-domain audio at
          * the exact frequency, which beats any integer-bin window for an
@@ -784,6 +819,7 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
         r.plausible = pi4_text_plausible(r.text);
         r.variant = (pi4_variant)c->v;
         r.tone0_hz = f0; r.t_s = t0 / PI4_FS;
+        r.edge = outside_band(p, r.variant, f0);
         r.sync_z = c->z; r.fit = a.fit; r.fit_z = a.fit_z; r.hard_errors = a.hard;
         r.spread_hz = pi4_spread_bins[c->w] * BIN_HZ;
         r.fano_metric = a.metric;

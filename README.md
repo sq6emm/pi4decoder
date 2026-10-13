@@ -73,7 +73,7 @@ Typical monitor call (as the `pi4dec` convention: 12 kHz file, minute at
 pi4decoder --variants PI4 --radius 50 minute.wav 3.0
 {"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": -0.001, "t_s": 2.999,
  "snr_db": -16.2, "fit": 1.000, "fit_z": 92.1, "sync_z": 50.8, "hard_errors": 1,
- "spread_hz": 2.9, "plausible": true, "listed": false}
+ "spread_hz": 2.9, "plausible": true, "listed": false, "edge": false}
 ```
 
 Fields: `text` message (trailing spaces trimmed); `variant`; `tone0_hz` audio
@@ -83,7 +83,12 @@ re-encoded message with the received symbols (-1..1); `fit_z` the same as a
 z-score (the acceptance statistic); `sync_z` sync-correlation z-score of the
 cell; `hard_errors` symbols whose data bit disagrees; `spread_hz` energy
 window used; `plausible` text looks like a callsign or `/status`; `listed`
-found by the known-message matcher.
+found by the known-message matcher; `edge` tone 0 of this variant lies outside
+the requested band (`--band`, or `--center` - spacing/2 ± `--radius`) by more
+than half a bin. A signal just outside the band is still caught by the wide
+spread windows at the band edge; it is then re-centred to its true tone 0
+(so `tone0_hz`, `spread_hz` and `snr_db` are right) and kept, with
+`edge: true`.
 
 Scan a long recording of unknown timing and frequency (e.g. OZ2M's 120 s
 6 kHz files):

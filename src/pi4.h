@@ -96,6 +96,9 @@ typedef struct {
     double spread_hz;     /* energy window used per tone                       */
     int    plausible;     /* text looks like a callsign / status message       */
     int    listed;        /* 1: found by the known-message matcher             */
+    int    edge;          /* 1: tone 0 of this variant lies outside its requested band
+                             (--band, or center - spacing/2 +- radius) by more than half
+                             a bin; such decodes are kept, flagged */
     long   fano_metric;
     double energy;        /* signal energy explained by the decode (noise units) */
 } pi4_result;

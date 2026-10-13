@@ -118,6 +118,53 @@ int main(void)
         }
     }
 
+    /* 3b. band edges: a clean signal just outside the requested band is caught
+     *     by a wide window's skirt; it must be re-centred to its true tone 0
+     *     (not reported at the edge, not as spread, S/N not inflated), kept and
+     *     flagged edge=1; inside the band edge=0. Band: PI4, radius 50 ->
+     *     tone 0 632.8 .. 732.8 Hz. */
+    {
+        double offs[] = { 0.0, -5.0, -13.0, -20.0, 5.0, 13.0, 20.0 };
+        unsigned i;
+        for (i = 0; i < sizeof offs / sizeof offs[0]; i++) {
+            double f0 = (offs[i] <= 0 ? 632.8125 : 732.8125) + offs[i];
+            size_t n; float *x = synth("SR9TST", 12000, 3.0, f0, -14, 40, &n);
+            pi4_params p; pi4_result r[4]; int nr;
+            pi4_params_default(&p);
+            p.variants = 1u << PI4_V_PI4; p.radius_hz = 50;
+            p.t_lo_s = 0.5; p.t_hi_s = 5.5;
+            nr = pi4_decode(x, n, 12000, &p, r, 4);
+            CHECK(nr == 1 && !strcmp(r[0].text, "SR9TST"), "edge %+g Hz: %d decodes", offs[i], nr);
+            if (nr == 1) {
+                CHECK(fabs(r[0].tone0_hz - f0) < 1.5, "edge %+g Hz: tone0 %.2f vs %.2f", offs[i], r[0].tone0_hz, f0);
+                CHECK(r[0].spread_hz < 10, "edge %+g Hz: false spread %.1f Hz", offs[i], r[0].spread_hz);
+                CHECK(fabs(r[0].snr_db + 14) < 2.0, "edge %+g Hz: snr %.1f", offs[i], r[0].snr_db);
+                CHECK(r[0].edge == (offs[i] != 0.0), "edge %+g Hz: edge flag %d", offs[i], r[0].edge);
+            }
+            free(x);
+        }
+        /* list mode: the listed candidate at the edge cell must be re-centred too
+         * (it is tried first and would shadow the blind decode) */
+        {
+            double f0 = 632.8125 - 13.0;
+            const char *calls[] = { "SR9TST" };
+            size_t n; float *x = synth("SR9TST", 12000, 3.0, f0, -14, 40, &n);
+            pi4_params p; pi4_result r[4]; int nr;
+            pi4_params_default(&p);
+            p.variants = 1u << PI4_V_PI4; p.radius_hz = 50;
+            p.t_lo_s = 0.5; p.t_hi_s = 5.5;
+            p.calls = calls; p.ncalls = 1;
+            nr = pi4_decode(x, n, 12000, &p, r, 4);
+            CHECK(nr == 1 && !strcmp(r[0].text, "SR9TST"), "edge list mode: %d decodes", nr);
+            if (nr == 1) {
+                CHECK(fabs(r[0].tone0_hz - f0) < 1.5, "edge list mode: tone0 %.2f vs %.2f", r[0].tone0_hz, f0);
+                CHECK(r[0].spread_hz < 10, "edge list mode: false spread %.1f Hz", r[0].spread_hz);
+                CHECK(r[0].edge == 1, "edge list mode: edge flag %d", r[0].edge);
+            }
+            free(x);
+        }
+    }
+
     /* 4. pure noise minutes decode to nothing (all variants, full radius) */
     {
         int i, bad = 0;
