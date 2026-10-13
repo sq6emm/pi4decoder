@@ -1,0 +1,66 @@
+== pi4decoder: own minutes (all variants, +-150 Hz)
+== 20261010_2157.wav
+RUSAGE user 0.40 s sys 0.01 s maxrss 10064 kB
+== 20261010_2157_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.87, "dt_s": -0.000, "t_s": 3.000, "snr_db": -15.7, "fit": 0.999, "fit_z": 93.0, "sync_z": 54.3, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.27 s sys 0.01 s maxrss 10188 kB
+== 20261010_2205.wav
+RUSAGE user 0.37 s sys 0.02 s maxrss 10104 kB
+== 20261010_2205_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.76, "dt_s": 0.000, "t_s": 3.000, "snr_db": -15.9, "fit": 1.000, "fit_z": 86.8, "sync_z": 52.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.25 s sys 0.01 s maxrss 10372 kB
+== 20261012_0511.wav
+RUSAGE user 0.42 s sys 0.01 s maxrss 10132 kB
+== 20261012_0511_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.77, "dt_s": -0.001, "t_s": 2.999, "snr_db": -15.8, "fit": 1.000, "fit_z": 98.5, "sync_z": 59.8, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.25 s sys 0.01 s maxrss 10244 kB
+== 20261012_0513.wav
+RUSAGE user 0.40 s sys 0.01 s maxrss 10176 kB
+== 20261012_0513_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.82, "dt_s": -0.002, "t_s": 2.998, "snr_db": -15.6, "fit": 1.000, "fit_z": 84.4, "sync_z": 54.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.28 s sys 0.01 s maxrss 9680 kB
+== 20261012_0514.wav
+RUSAGE user 0.37 s sys 0.01 s maxrss 10176 kB
+== 20261012_0514_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.83, "dt_s": -0.000, "t_s": 3.000, "snr_db": -16.8, "fit": 1.000, "fit_z": 76.7, "sync_z": 50.5, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.27 s sys 0.01 s maxrss 10152 kB
+== 20261012_0515.wav
+RUSAGE user 0.37 s sys 0.01 s maxrss 10184 kB
+== 20261012_0515_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.80, "dt_s": 0.001, "t_s": 3.001, "snr_db": -15.7, "fit": 1.000, "fit_z": 96.7, "sync_z": 57.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.26 s sys 0.01 s maxrss 10192 kB
+== 20261013_0025.wav
+RUSAGE user 0.35 s sys 0.01 s maxrss 9804 kB
+== 20261013_0025_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.75, "dt_s": 0.000, "t_s": 3.000, "snr_db": -15.5, "fit": 1.000, "fit_z": 97.4, "sync_z": 57.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.28 s sys 0.01 s maxrss 9672 kB
+== 20261013_0614.wav
+RUSAGE user 0.34 s sys 0.01 s maxrss 10240 kB
+== 20261013_0614_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": -0.001, "t_s": 2.999, "snr_db": -16.5, "fit": 1.000, "fit_z": 77.4, "sync_z": 54.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.28 s sys 0.01 s maxrss 10372 kB
+== 20261013_1202.wav
+RUSAGE user 0.35 s sys 0.01 s maxrss 10188 kB
+== 20261013_1202_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.75, "dt_s": 0.000, "t_s": 3.000, "snr_db": -16.5, "fit": 1.000, "fit_z": 79.5, "sync_z": 49.4, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.24 s sys 0.01 s maxrss 10236 kB
+== 20261013_1333.wav
+RUSAGE user 0.44 s sys 0.01 s maxrss 10240 kB
+== 20261013_1333_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.70, "dt_s": -0.000, "t_s": 3.000, "snr_db": -16.2, "fit": 0.999, "fit_z": 69.6, "sync_z": 53.3, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.25 s sys 0.01 s maxrss 10188 kB
+== 20261013_1618.wav
+RUSAGE user 0.41 s sys 0.01 s maxrss 10188 kB
+== 20261013_1618_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.76, "dt_s": 0.001, "t_s": 3.001, "snr_db": -16.1, "fit": 0.997, "fit_z": 86.2, "sync_z": 53.2, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.24 s sys 0.01 s maxrss 10244 kB
+== 20261013_1752.wav
+RUSAGE user 0.35 s sys 0.01 s maxrss 10192 kB
+== 20261013_1752_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.75, "dt_s": -0.001, "t_s": 2.999, "snr_db": -15.7, "fit": 1.000, "fit_z": 97.4, "sync_z": 53.4, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.25 s sys 0.01 s maxrss 10256 kB
+== 20261013_1753.wav
+RUSAGE user 0.31 s sys 0.01 s maxrss 9872 kB
+== 20261013_1753_inj16.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.80, "dt_s": 0.001, "t_s": 3.001, "snr_db": -15.3, "fit": 1.000, "fit_z": 69.9, "sync_z": 29.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.24 s sys 0.01 s maxrss 10244 kB

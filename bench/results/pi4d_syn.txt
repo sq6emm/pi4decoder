@@ -1,0 +1,212 @@
+== pi4d: synthetic set (file re-cut to start at the minute)
+== drift_0.wav
+   9  0.09  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.97 s sys 0.01 s maxrss 7560 kB
+== drift_1.wav
+   9  0.09  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.97 s sys 0.02 s maxrss 7328 kB
+== drift_2.wav
+   9  0.09  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.71 s sys 0.01 s maxrss 7492 kB
+== noise_0.wav
+<DecodeFinished>
+RUSAGE user 0.63 s sys 0.01 s maxrss 7092 kB
+== noise_1.wav
+<DecodeFinished>
+RUSAGE user 0.64 s sys 0.01 s maxrss 7448 kB
+== noise_2.wav
+<DecodeFinished>
+RUSAGE user 0.96 s sys 0.01 s maxrss 6976 kB
+== noise_3.wav
+<DecodeFinished>
+RUSAGE user 0.85 s sys 0.01 s maxrss 7156 kB
+== noise_4.wav
+<DecodeFinished>
+RUSAGE user 0.86 s sys 0.01 s maxrss 7360 kB
+== noise_5.wav
+<DecodeFinished>
+RUSAGE user 0.96 s sys 0.01 s maxrss 7116 kB
+== noise_6.wav
+<DecodeFinished>
+RUSAGE user 0.78 s sys 0.01 s maxrss 7396 kB
+== noise_7.wav
+<DecodeFinished>
+RUSAGE user 0.86 s sys 0.01 s maxrss 7212 kB
+== noise_8.wav
+<DecodeFinished>
+RUSAGE user 0.97 s sys 0.01 s maxrss 7364 kB
+== noise_9.wav
+<DecodeFinished>
+RUSAGE user 0.94 s sys 0.01 s maxrss 7204 kB
+== s-10_df-15.wav
+  16  0.50  1019 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.91 s sys 0.00 s maxrss 7448 kB
+== s-10_df-5.wav
+  15  0.49  1028 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.91 s sys 0.01 s maxrss 7396 kB
+== s-10_df-9.wav
+  16  0.50  1025 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.88 s sys 0.01 s maxrss 7616 kB
+== s-10_df0.wav
+  16  0.50  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.84 s sys 0.00 s maxrss 7300 kB
+== s-10_df15.wav
+  15  0.51  1049 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.95 s sys 0.01 s maxrss 7680 kB
+== s-10_df5.wav
+  16  0.50  1040 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.91 s sys 0.01 s maxrss 7444 kB
+== s-10_df9.wav
+  15  0.49  1043 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.96 s sys 0.01 s maxrss 7472 kB
+== s-16_df-15.wav
+  10  0.49  1019 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.87 s sys 0.01 s maxrss 7572 kB
+== s-16_df-5.wav
+  10  0.49  1028 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.90 s sys 0.01 s maxrss 7668 kB
+== s-16_df-9.wav
+  10  0.50  1025 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.98 s sys 0.01 s maxrss 7432 kB
+== s-16_df0.wav
+  10  0.51  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.74 s sys 0.01 s maxrss 7472 kB
+== s-16_df15.wav
+  10  0.49  1049 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.89 s sys 0.01 s maxrss 7448 kB
+== s-16_df5.wav
+   9  0.51  1040 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.89 s sys 0.00 s maxrss 7332 kB
+== s-16_df9.wav
+  10  0.50  1043 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.82 s sys 0.01 s maxrss 7612 kB
+== spread_100_0.wav
+   4  0.20  1043 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.88 s sys 0.01 s maxrss 7680 kB
+== spread_100_1.wav
+<DecodeFinished>
+RUSAGE user 0.89 s sys 0.01 s maxrss 7316 kB
+== spread_100_2.wav
+<DecodeFinished>
+RUSAGE user 0.91 s sys 0.00 s maxrss 7184 kB
+== spread_10_0.wav
+   7  0.22  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.78 s sys 0.01 s maxrss 7212 kB
+== spread_10_1.wav
+   8  0.20  1031 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.81 s sys 0.01 s maxrss 7488 kB
+== spread_10_2.wav
+   8  0.17  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.78 s sys 0.03 s maxrss 7236 kB
+== spread_20_0.wav
+   5  0.22  1037 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.78 s sys 0.01 s maxrss 7380 kB
+== spread_20_1.wav
+   5  0.20  1037 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.72 s sys 0.03 s maxrss 7444 kB
+== spread_20_2.wav
+   5  0.20  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.85 s sys 0.01 s maxrss 7216 kB
+== spread_50_0.wav
+<DecodeFinished>
+RUSAGE user 0.89 s sys 0.01 s maxrss 7096 kB
+== spread_50_1.wav
+<DecodeFinished>
+RUSAGE user 0.80 s sys 0.01 s maxrss 7176 kB
+== spread_50_2.wav
+<DecodeFinished>
+RUSAGE user 0.90 s sys 0.01 s maxrss 7076 kB
+== syn_-20_0.wav
+   7  0.55  1022 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.86 s sys 0.01 s maxrss 7436 kB
+== syn_-20_1.wav
+   6 -0.41  1016 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.85 s sys 0.00 s maxrss 7468 kB
+== syn_-20_2.wav
+   5  0.91  1052 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.93 s sys 0.01 s maxrss 7304 kB
+== syn_-22_0.wav
+   3 -0.10  1046 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.84 s sys 0.01 s maxrss 7472 kB
+== syn_-22_1.wav
+   5 -0.30  1019 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.83 s sys 0.01 s maxrss 7620 kB
+== syn_-22_2.wav
+   4  0.26  1034 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 1.02 s sys 0.00 s maxrss 7224 kB
+== syn_-24_0.wav
+<DecodeFinished>
+RUSAGE user 0.82 s sys 0.01 s maxrss 7152 kB
+== syn_-24_1.wav
+   2  0.55  1043 PI4      OZ7IGY
+<DecodeFinished>
+RUSAGE user 0.72 s sys 0.01 s maxrss 7548 kB
+== syn_-24_2.wav
+<DecodeFinished>
+RUSAGE user 0.82 s sys 0.01 s maxrss 7320 kB
+== syn_-26_0.wav
+<DecodeFinished>
+RUSAGE user 1.01 s sys 0.01 s maxrss 7184 kB
+== syn_-26_1.wav
+<DecodeFinished>
+RUSAGE user 0.83 s sys 0.01 s maxrss 7184 kB
+== syn_-26_2.wav
+<DecodeFinished>
+RUSAGE user 0.86 s sys 0.01 s maxrss 7380 kB
+== syn_-28_0.wav
+<DecodeFinished>
+RUSAGE user 0.73 s sys 0.01 s maxrss 7424 kB
+== syn_-28_1.wav
+<DecodeFinished>
+RUSAGE user 0.93 s sys 0.01 s maxrss 7416 kB
+== syn_-28_2.wav
+<DecodeFinished>
+RUSAGE user 0.99 s sys 0.01 s maxrss 7444 kB
+== syn_-30_0.wav
+<DecodeFinished>
+RUSAGE user 0.99 s sys 0.01 s maxrss 7404 kB
+== syn_-30_1.wav
+<DecodeFinished>
+RUSAGE user 0.95 s sys 0.01 s maxrss 7100 kB
+== syn_-30_2.wav
+<DecodeFinished>
+RUSAGE user 1.00 s sys 0.01 s maxrss 7236 kB
+== syn_-32_0.wav
+<DecodeFinished>
+RUSAGE user 0.99 s sys 0.00 s maxrss 7180 kB
+== syn_-32_1.wav
+<DecodeFinished>
+RUSAGE user 0.97 s sys 0.01 s maxrss 7320 kB
+== syn_-32_2.wav
+<DecodeFinished>
+RUSAGE user 0.83 s sys 0.01 s maxrss 7100 kB

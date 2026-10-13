@@ -1,0 +1,1 @@
+test_noise: 500 minutes, seed 21, gate 6.0: 0 converged, 0 passed; max fit_z 0.00, max fit 0.000, max sync_z 0.00; 0.40 s/minute

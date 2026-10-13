@@ -1,0 +1,157 @@
+== pi4decoder: synthetic set
+== drift_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 683.70, "dt_s": 0.098, "t_s": 3.098, "snr_db": -16.3, "fit": 1.000, "fit_z": 87.0, "sync_z": 47.8, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7356 kB
+== drift_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 683.67, "dt_s": 0.101, "t_s": 3.101, "snr_db": -16.2, "fit": 1.000, "fit_z": 82.5, "sync_z": 50.5, "hard_errors": 2, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 6684 kB
+== drift_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 683.64, "dt_s": 0.100, "t_s": 3.100, "snr_db": -16.5, "fit": 1.000, "fit_z": 72.2, "sync_z": 46.1, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7168 kB
+== noise_0.wav
+RUSAGE user 0.15 s sys 0.01 s maxrss 7264 kB
+== noise_1.wav
+RUSAGE user 0.13 s sys 0.01 s maxrss 7360 kB
+== noise_2.wav
+RUSAGE user 0.13 s sys 0.01 s maxrss 7432 kB
+== noise_3.wav
+RUSAGE user 0.11 s sys 0.01 s maxrss 7012 kB
+== noise_4.wav
+RUSAGE user 0.10 s sys 0.01 s maxrss 6984 kB
+== noise_5.wav
+RUSAGE user 0.14 s sys 0.02 s maxrss 7316 kB
+== noise_6.wav
+RUSAGE user 0.08 s sys 0.01 s maxrss 7364 kB
+== noise_7.wav
+RUSAGE user 0.08 s sys 0.01 s maxrss 7340 kB
+== noise_8.wav
+RUSAGE user 0.09 s sys 0.01 s maxrss 7364 kB
+== noise_9.wav
+RUSAGE user 0.11 s sys 0.01 s maxrss 7076 kB
+== s-10_df-15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.87, "dt_s": 0.500, "t_s": 3.500, "snr_db": -9.7, "fit": 1.000, "fit_z": 382.0, "sync_z": 192.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.10 s sys 0.01 s maxrss 7328 kB
+== s-10_df-5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 677.72, "dt_s": 0.500, "t_s": 3.500, "snr_db": -9.7, "fit": 1.000, "fit_z": 368.7, "sync_z": 167.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.12 s sys 0.01 s maxrss 7544 kB
+== s-10_df-9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 673.80, "dt_s": 0.500, "t_s": 3.500, "snr_db": -9.9, "fit": 1.000, "fit_z": 408.6, "sync_z": 191.1, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7368 kB
+== s-10_df0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.75, "dt_s": 0.500, "t_s": 3.500, "snr_db": -10.0, "fit": 1.000, "fit_z": 333.8, "sync_z": 194.2, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7092 kB
+== s-10_df15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 697.63, "dt_s": 0.500, "t_s": 3.500, "snr_db": -10.1, "fit": 1.000, "fit_z": 307.4, "sync_z": 193.1, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.00 s maxrss 7364 kB
+== s-10_df5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 687.97, "dt_s": 0.499, "t_s": 3.499, "snr_db": -10.3, "fit": 1.000, "fit_z": 355.5, "sync_z": 183.8, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.10 s sys 0.01 s maxrss 7268 kB
+== s-10_df9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 691.71, "dt_s": 0.500, "t_s": 3.500, "snr_db": -10.2, "fit": 1.000, "fit_z": 408.4, "sync_z": 178.4, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7008 kB
+== s-16_df-15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.90, "dt_s": 0.500, "t_s": 3.500, "snr_db": -15.9, "fit": 0.999, "fit_z": 91.2, "sync_z": 57.8, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.12 s sys 0.01 s maxrss 7468 kB
+== s-16_df-5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 677.66, "dt_s": 0.500, "t_s": 3.500, "snr_db": -15.3, "fit": 1.000, "fit_z": 98.5, "sync_z": 53.5, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7372 kB
+== s-16_df-9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 673.81, "dt_s": 0.499, "t_s": 3.499, "snr_db": -16.4, "fit": 1.000, "fit_z": 84.8, "sync_z": 53.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7636 kB
+== s-16_df0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.74, "dt_s": 0.500, "t_s": 3.500, "snr_db": -16.0, "fit": 1.000, "fit_z": 101.0, "sync_z": 58.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7372 kB
+== s-16_df15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 697.71, "dt_s": 0.499, "t_s": 3.499, "snr_db": -15.8, "fit": 1.000, "fit_z": 86.9, "sync_z": 55.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.10 s sys 0.02 s maxrss 7200 kB
+== s-16_df5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 688.02, "dt_s": 0.501, "t_s": 3.501, "snr_db": -16.0, "fit": 0.997, "fit_z": 91.8, "sync_z": 53.8, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.10 s sys 0.01 s maxrss 6868 kB
+== s-16_df9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 691.61, "dt_s": 0.500, "t_s": 3.500, "snr_db": -16.0, "fit": 1.000, "fit_z": 103.1, "sync_z": 56.1, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.12 s sys 0.00 s maxrss 7436 kB
+== spread_100_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 687.71, "dt_s": 0.206, "t_s": 3.206, "snr_db": -17.9, "fit": 0.859, "fit_z": 22.1, "sync_z": 12.5, "hard_errors": 25, "spread_hz": 14.6, "plausible": true, "listed": false}
+RUSAGE user 0.09 s sys 0.01 s maxrss 7228 kB
+== spread_100_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 703.28, "dt_s": 0.210, "t_s": 3.210, "snr_db": -14.0, "fit": 0.900, "fit_z": 18.2, "sync_z": 8.3, "hard_errors": 17, "spread_hz": 96.7, "plausible": true, "listed": false}
+RUSAGE user 0.17 s sys 0.01 s maxrss 7244 kB
+== spread_100_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.08, "dt_s": 0.189, "t_s": 3.189, "snr_db": -14.3, "fit": 0.874, "fit_z": 16.3, "sync_z": 10.2, "hard_errors": 22, "spread_hz": 96.7, "plausible": true, "listed": false}
+RUSAGE user 0.24 s sys 0.01 s maxrss 7332 kB
+== spread_10_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 683.33, "dt_s": 0.204, "t_s": 3.204, "snr_db": -13.5, "fit": 0.989, "fit_z": 58.9, "sync_z": 30.4, "hard_errors": 9, "spread_hz": 14.6, "plausible": true, "listed": false}
+RUSAGE user 0.09 s sys 0.01 s maxrss 7556 kB
+== spread_10_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 681.13, "dt_s": 0.198, "t_s": 3.198, "snr_db": -18.2, "fit": 0.948, "fit_z": 52.7, "sync_z": 30.9, "hard_errors": 24, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7376 kB
+== spread_10_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.59, "dt_s": 0.198, "t_s": 3.198, "snr_db": -18.1, "fit": 0.977, "fit_z": 55.2, "sync_z": 34.0, "hard_errors": 18, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7296 kB
+== spread_20_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.204, "t_s": 3.204, "snr_db": -13.8, "fit": 0.957, "fit_z": 41.9, "sync_z": 22.2, "hard_errors": 10, "spread_hz": 26.4, "plausible": true, "listed": false}
+RUSAGE user 0.08 s sys 0.01 s maxrss 7356 kB
+== spread_20_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 683.22, "dt_s": 0.199, "t_s": 3.199, "snr_db": -15.6, "fit": 0.941, "fit_z": 30.9, "sync_z": 19.8, "hard_errors": 18, "spread_hz": 14.6, "plausible": true, "listed": false}
+RUSAGE user 0.08 s sys 0.01 s maxrss 7388 kB
+== spread_20_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 685.19, "dt_s": 0.203, "t_s": 3.203, "snr_db": -15.9, "fit": 0.941, "fit_z": 30.3, "sync_z": 17.9, "hard_errors": 19, "spread_hz": 14.6, "plausible": true, "listed": false}
+RUSAGE user 0.08 s sys 0.01 s maxrss 7372 kB
+== spread_50_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 680.05, "dt_s": 0.193, "t_s": 3.193, "snr_db": -13.3, "fit": 0.939, "fit_z": 19.7, "sync_z": 12.6, "hard_errors": 16, "spread_hz": 96.7, "plausible": true, "listed": false}
+RUSAGE user 0.14 s sys 0.01 s maxrss 7400 kB
+== spread_50_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.05, "dt_s": 0.201, "t_s": 3.201, "snr_db": -14.4, "fit": 0.920, "fit_z": 20.8, "sync_z": 15.4, "hard_errors": 20, "spread_hz": 49.8, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7352 kB
+== spread_50_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.51, "dt_s": 0.199, "t_s": 3.199, "snr_db": -13.7, "fit": 0.958, "fit_z": 25.6, "sync_z": 16.3, "hard_errors": 10, "spread_hz": 49.8, "plausible": true, "listed": false}
+RUSAGE user 0.09 s sys 0.01 s maxrss 7436 kB
+== syn_-20_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.96, "dt_s": 0.552, "t_s": 3.552, "snr_db": -19.6, "fit": 0.967, "fit_z": 40.3, "sync_z": 25.0, "hard_errors": 9, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 6896 kB
+== syn_-20_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 664.91, "dt_s": -0.410, "t_s": 2.590, "snr_db": -20.2, "fit": 0.943, "fit_z": 34.4, "sync_z": 22.0, "hard_errors": 10, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7332 kB
+== syn_-20_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 700.02, "dt_s": 0.881, "t_s": 3.881, "snr_db": -19.2, "fit": 0.983, "fit_z": 45.7, "sync_z": 24.4, "hard_errors": 6, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.13 s sys 0.01 s maxrss 7368 kB
+== syn_-22_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 694.06, "dt_s": -0.092, "t_s": 2.908, "snr_db": -22.7, "fit": 0.872, "fit_z": 18.1, "sync_z": 11.9, "hard_errors": 26, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.14 s sys 0.01 s maxrss 7016 kB
+== syn_-22_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.63, "dt_s": -0.299, "t_s": 2.701, "snr_db": -21.7, "fit": 0.894, "fit_z": 23.6, "sync_z": 14.1, "hard_errors": 21, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7368 kB
+== syn_-22_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.68, "dt_s": 0.242, "t_s": 3.242, "snr_db": -21.0, "fit": 0.968, "fit_z": 26.1, "sync_z": 16.2, "hard_errors": 12, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.11 s sys 0.01 s maxrss 7384 kB
+== syn_-24_0.wav
+RUSAGE user 0.18 s sys 0.01 s maxrss 7224 kB
+== syn_-24_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 690.88, "dt_s": 0.570, "t_s": 3.570, "snr_db": -22.9, "fit": 0.877, "fit_z": 17.9, "sync_z": 10.3, "hard_errors": 22, "spread_hz": 2.9, "plausible": true, "listed": false}
+RUSAGE user 0.13 s sys 0.01 s maxrss 7360 kB
+== syn_-24_2.wav
+RUSAGE user 0.20 s sys 0.01 s maxrss 7324 kB
+== syn_-26_0.wav
+RUSAGE user 0.14 s sys 0.01 s maxrss 7316 kB
+== syn_-26_1.wav
+RUSAGE user 0.22 s sys 0.01 s maxrss 7368 kB
+== syn_-26_2.wav
+RUSAGE user 0.14 s sys 0.01 s maxrss 7444 kB
+== syn_-28_0.wav
+RUSAGE user 0.14 s sys 0.01 s maxrss 7352 kB
+== syn_-28_1.wav
+RUSAGE user 0.14 s sys 0.01 s maxrss 7324 kB
+== syn_-28_2.wav
+RUSAGE user 0.09 s sys 0.01 s maxrss 7324 kB
+== syn_-30_0.wav
+RUSAGE user 0.11 s sys 0.01 s maxrss 7440 kB
+== syn_-30_1.wav
+RUSAGE user 0.10 s sys 0.01 s maxrss 7360 kB
+== syn_-30_2.wav
+RUSAGE user 0.09 s sys 0.01 s maxrss 7380 kB
+== syn_-32_0.wav
+RUSAGE user 0.09 s sys 0.01 s maxrss 7312 kB
+== syn_-32_1.wav
+RUSAGE user 0.12 s sys 0.01 s maxrss 7360 kB
+== syn_-32_2.wav
+RUSAGE user 0.10 s sys 0.01 s maxrss 7432 kB

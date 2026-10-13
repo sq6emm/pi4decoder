@@ -1,0 +1,32 @@
+== pi4decoder: synthetic set
+== pi4decoder: OZ2M scan
+== pi4decoder: own minutes (all variants, +-150 Hz)
+== false decodes on pure noise (200 minutes)
+| Test | Files | pi4decoder | pi4dec | pi4d | mshv |
+|---|---|---|---|---|---|
+| Synthetic -10 dB | 7 | 7 | 7 | 7 | 7 |
+| Synthetic -16 dB | 7 | 7 | 7 | 7 | 7 |
+| Synthetic -20/-22 dB | 6 | 6 | 6 | 6 | 0 |
+| Synthetic -24..-32 dB | 15 | 1 | 1 | 1 | 0 |
+| Synthetic drift 2 Hz, -16 dB | 3 | 3 | 3 | 3 | 3 |
+| Synthetic pure noise | 10 | 0 | 0 | 0 | 0 |
+| Synthetic spread 10-100 Hz, -16 dB | 12 | 12 | 7 | 7 | 12 |
+| OZ2M 10 GHz ED5YAE/B (spread) | 2 | 2 | - | - | - |
+| OZ2M 28 MHz G3ZJO | 1 | 1 | - | - | - |
+| OZ2M 432 MHz OZ7IGY 2013 | 16 | 16 | - | - | - |
+| OZ2M 70 MHz IW9GDC/B | 2 | 2 | - | - | - |
+| OZ2M 70 MHz OZ7IGY 2014 | 8 | 8 | - | - | - |
+| OZ2M 70 MHz OZ7IGY 2015 (weak) | 4 | 4 | - | - | - |
+| Own minutes (no signal) | 13 | 0 | - | - | - |
+| Own minutes + -16 dB OZ7IGY | 13 | 13 | - | - | - |
+
+| Decoder | set | mean CPU s/file | peak RSS kB |
+|---|---|---|---|
+| pi4decoder | syn | 0.12 | 7636 |
+| pi4decoder | oz2m | 3.66 | 93876 |
+| pi4decoder | rec | 0.32 | 10372 |
+| pi4dec | syn | 0.70 | 11012 |
+| pi4d | syn | 0.87 | 7680 |
+| mshv | syn | 1.38 | 243776 |
+
+test_noise: 200 minutes, seed 42, gate 6.0: 0 converged, 0 passed; max fit_z 0.00, max fit 0.000, max sync_z 0.00; 0.38 s/minute

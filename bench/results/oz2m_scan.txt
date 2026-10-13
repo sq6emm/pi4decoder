@@ -1,0 +1,119 @@
+== 10G_140513_174108_846.wav
+{"text": "ED5YAE/B", "variant": "PI4", "tone0_hz": 672.84, "dt_s": 51.589, "t_s": 51.589, "snr_db": -7.3, "fit": 0.997, "fit_z": 368.2, "sync_z": 130.7, "hard_errors": 8, "spread_hz": 8.8, "plausible": true, "listed": false}
+time 4.21 s 118260 kB
+== 10G_140513_174308_864.wav
+{"text": "ED5YAE/B", "variant": "PI4", "tone0_hz": 673.99, "dt_s": 51.596, "t_s": 51.596, "snr_db": -8.0, "fit": 0.997, "fit_z": 245.0, "sync_z": 117.6, "hard_errors": 7, "spread_hz": 8.8, "plausible": true, "listed": false}
+time 3.54 s 118188 kB
+== 28M_141106_170553_610.wav
+{"text": "G3ZJO", "variant": "PI4", "tone0_hz": 687.45, "dt_s": 6.683, "t_s": 6.683, "snr_db": 1.1, "fit": 1.000, "fit_z": 1037.0, "sync_z": 1639.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.30 s 118592 kB
+== 432M_130815_185710_897.wav
+time 3.70 s 118564 kB
+== 432M_130815_185911_011.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 597.08, "dt_s": 50.065, "t_s": 50.065, "snr_db": 14.8, "fit": 1.000, "fit_z": 50987.2, "sync_z": 1146.1, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.27 s 118600 kB
+== 432M_130815_190111_027.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 599.61, "dt_s": 50.083, "t_s": 50.083, "snr_db": 15.9, "fit": 1.000, "fit_z": 96042.9, "sync_z": 1126.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 5.11 s 118392 kB
+== 432M_130815_190310_964.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 599.44, "dt_s": 50.101, "t_s": 50.101, "snr_db": 14.5, "fit": 1.000, "fit_z": 46460.4, "sync_z": 1037.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.30 s 118148 kB
+== 432M_130815_190510_980.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 600.07, "dt_s": 49.450, "t_s": 49.450, "snr_db": -6.4, "fit": 0.940, "fit_z": 26.9, "sync_z": 757.8, "hard_errors": 15, "spread_hz": 14.6, "plausible": true, "listed": false}
+time 3.97 s 118572 kB
+== 432M_130815_190746_261.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.27, "dt_s": 14.796, "t_s": 14.796, "snr_db": 14.0, "fit": 1.000, "fit_z": 59490.1, "sync_z": 863.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.78, "dt_s": 74.807, "t_s": 74.807, "snr_db": 14.0, "fit": 1.000, "fit_z": 58523.0, "sync_z": 829.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.78 s 118524 kB
+== 432M_130815_190946_199.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.56, "dt_s": 74.820, "t_s": 74.820, "snr_db": 16.3, "fit": 1.000, "fit_z": 83806.1, "sync_z": 842.6, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.75, "dt_s": 14.813, "t_s": 14.813, "snr_db": 17.5, "fit": 1.000, "fit_z": 129502.5, "sync_z": 784.5, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.60 s 118032 kB
+== 432M_130815_191146_214.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.51, "dt_s": 14.831, "t_s": 14.831, "snr_db": 15.7, "fit": 1.000, "fit_z": 66951.8, "sync_z": 829.1, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.82, "dt_s": 74.816, "t_s": 74.816, "snr_db": 14.6, "fit": 1.000, "fit_z": 46929.1, "sync_z": 880.5, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.78 s 118400 kB
+== 432M_130815_191346_245.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 603.25, "dt_s": 74.833, "t_s": 74.833, "snr_db": 20.8, "fit": 1.000, "fit_z": 250226.3, "sync_z": 986.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 602.96, "dt_s": 14.827, "t_s": 14.827, "snr_db": 16.0, "fit": 1.000, "fit_z": 66350.6, "sync_z": 881.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.21 s 118596 kB
+== 432M_130815_191546_167.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 603.52, "dt_s": 14.840, "t_s": 14.840, "snr_db": 15.8, "fit": 1.000, "fit_z": 65132.5, "sync_z": 865.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 603.81, "dt_s": 74.851, "t_s": 74.851, "snr_db": 15.0, "fit": 1.000, "fit_z": 49494.7, "sync_z": 895.2, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.29 s 118020 kB
+== 432M_130815_191746_199.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.07, "dt_s": 74.866, "t_s": 74.866, "snr_db": 18.2, "fit": 1.000, "fit_z": 136984.3, "sync_z": 772.4, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.16, "dt_s": 14.856, "t_s": 14.856, "snr_db": 16.2, "fit": 1.000, "fit_z": 92972.8, "sync_z": 814.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.88 s 118560 kB
+== 432M_130815_191946_214.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.10, "dt_s": 14.874, "t_s": 14.874, "snr_db": 18.2, "fit": 1.000, "fit_z": 133161.6, "sync_z": 795.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.40, "dt_s": 74.880, "t_s": 74.880, "snr_db": 15.7, "fit": 1.000, "fit_z": 73441.3, "sync_z": 829.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.90 s 117984 kB
+== 432M_130815_192146_152.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.56, "dt_s": 74.897, "t_s": 74.897, "snr_db": 19.6, "fit": 1.000, "fit_z": 191794.5, "sync_z": 872.6, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.26, "dt_s": 14.891, "t_s": 14.891, "snr_db": 15.4, "fit": 1.000, "fit_z": 59590.5, "sync_z": 776.1, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 5.85 s 118676 kB
+== 432M_130815_192346_167.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.50, "dt_s": 14.904, "t_s": 14.904, "snr_db": 16.8, "fit": 1.000, "fit_z": 92054.2, "sync_z": 805.4, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 605.77, "dt_s": 74.915, "t_s": 74.915, "snr_db": 16.9, "fit": 1.000, "fit_z": 86762.6, "sync_z": 879.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.89 s 118536 kB
+== 432M_130815_192546_183.wav
+time 4.69 s 118076 kB
+== 432M_130815_192748_527.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 606.51, "dt_s": 90.622, "t_s": 90.622, "snr_db": 14.5, "fit": 1.000, "fit_z": 47319.4, "sync_z": 889.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.83 s 118168 kB
+== 70M_130828_113521_133.wav
+time 6.65 s 176012 kB
+== 70M_130828_113820_586.wav
+time 4.19 s 118592 kB
+== 70M_140903_215850_213.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.42, "dt_s": 11.083, "t_s": 11.083, "snr_db": -11.7, "fit": 1.000, "fit_z": 233.3, "sync_z": 152.9, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.29, "dt_s": 71.082, "t_s": 71.082, "snr_db": -14.0, "fit": 1.000, "fit_z": 130.9, "sync_z": 86.9, "hard_errors": 1, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.51 s 118088 kB
+== 70M_140903_220050_229.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 669.95, "dt_s": 11.079, "t_s": 11.079, "snr_db": -16.6, "fit": 0.996, "fit_z": 84.0, "sync_z": 47.4, "hard_errors": 3, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.17, "dt_s": 71.081, "t_s": 71.081, "snr_db": -18.6, "fit": 0.967, "fit_z": 45.8, "sync_z": 32.2, "hard_errors": 9, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.69 s 118212 kB
+== 70M_140903_220250_229.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.32, "dt_s": 71.081, "t_s": 71.081, "snr_db": -10.4, "fit": 1.000, "fit_z": 385.4, "sync_z": 197.5, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.44, "dt_s": 11.078, "t_s": 11.078, "snr_db": -14.2, "fit": 1.000, "fit_z": 137.4, "sync_z": 76.2, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.60 s 118588 kB
+== 70M_140903_220450_244.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.34, "dt_s": 71.077, "t_s": 71.077, "snr_db": -9.3, "fit": 1.000, "fit_z": 413.6, "sync_z": 243.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.37, "dt_s": 11.078, "t_s": 11.078, "snr_db": -9.4, "fit": 1.000, "fit_z": 434.6, "sync_z": 214.2, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.05 s 118092 kB
+== 70M_140903_220650_251.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.53, "dt_s": 11.076, "t_s": 11.076, "snr_db": -8.4, "fit": 1.000, "fit_z": 510.9, "sync_z": 272.0, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.07, "dt_s": 71.073, "t_s": 71.073, "snr_db": -9.7, "fit": 1.000, "fit_z": 415.8, "sync_z": 214.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.07 s 118808 kB
+== 70M_140903_220850_267.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.25, "dt_s": 71.070, "t_s": 71.070, "snr_db": -7.8, "fit": 1.000, "fit_z": 536.9, "sync_z": 310.7, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.25, "dt_s": 11.073, "t_s": 11.073, "snr_db": -9.4, "fit": 1.000, "fit_z": 397.2, "sync_z": 243.9, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 3.34 s 118376 kB
+== 70M_140903_221050_267.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.21, "dt_s": 11.069, "t_s": 11.069, "snr_db": -7.8, "fit": 1.000, "fit_z": 564.0, "sync_z": 363.3, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 4.04 s 118352 kB
+== 70M_140903_221250_282.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.20, "dt_s": 11.067, "t_s": 11.067, "snr_db": -8.1, "fit": 1.000, "fit_z": 648.5, "sync_z": 292.1, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.14, "dt_s": 71.067, "t_s": 71.067, "snr_db": -8.6, "fit": 1.000, "fit_z": 493.5, "sync_z": 279.4, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 2.46 s 118196 kB
+== 70M_150317_152614_176.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 935.28, "dt_s": 45.641, "t_s": 45.641, "snr_db": -7.0, "fit": 0.958, "fit_z": 51.9, "sync_z": 27.0, "hard_errors": 15, "spread_hz": 49.8, "plausible": true, "listed": false}
+time 2.45 s 89532 kB
+== 70M_150317_152744_008.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 916.59, "dt_s": 15.968, "t_s": 15.968, "snr_db": -6.2, "fit": 0.988, "fit_z": 58.4, "sync_z": 39.4, "hard_errors": 6, "spread_hz": 49.8, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 956.80, "dt_s": 75.973, "t_s": 75.973, "snr_db": -8.4, "fit": 0.945, "fit_z": 40.3, "sync_z": 20.3, "hard_errors": 19, "spread_hz": 49.8, "plausible": true, "listed": false}
+time 3.13 s 118796 kB
+== 70M_150317_152944_118.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 1016.07, "dt_s": 15.965, "t_s": 15.965, "snr_db": -8.9, "fit": 0.987, "fit_z": 31.9, "sync_z": 23.6, "hard_errors": 6, "spread_hz": 49.8, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 1020.42, "dt_s": 75.960, "t_s": 75.960, "snr_db": -9.6, "fit": 0.962, "fit_z": 30.1, "sync_z": 22.9, "hard_errors": 15, "spread_hz": 49.8, "plausible": true, "listed": false}
+time 3.39 s 118800 kB
+== 70M_150317_153144_243.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 1021.98, "dt_s": 15.961, "t_s": 15.961, "snr_db": -8.1, "fit": 0.978, "fit_z": 28.4, "sync_z": 18.1, "hard_errors": 13, "spread_hz": 96.7, "plausible": true, "listed": false}
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 1066.20, "dt_s": 75.626, "t_s": 75.626, "snr_db": -10.4, "fit": 0.980, "fit_z": 23.4, "sync_z": 17.5, "hard_errors": 5, "spread_hz": 49.8, "plausible": true, "listed": false}
+time 3.65 s 118800 kB
+== pi4_cwid_car_mp3.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 684.22, "dt_s": 1.026, "t_s": 1.026, "snr_db": 18.6, "fit": 1.000, "fit_z": 197063.5, "sync_z": 169218.2, "hard_errors": 0, "spread_hz": 2.9, "plausible": true, "listed": false}
+time 1.42 s 59260 kB
+== pi4_cwid_car_mp4.wav
+time 2.49 s 64540 kB

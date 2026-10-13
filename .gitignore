@@ -10,5 +10,4 @@
 # test audio and benchmark artefacts (large, third party or regenerable)
 /testdata/
 *.wav
-/bench/results/
 /bench/raw/

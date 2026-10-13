@@ -1,0 +1,22 @@
+text=OZ7IGY spread=10.0 drift=0.0 args='--variants PI4' trials/step=30
+  S/N dB   decoded   wrong   mean est
+   -16.0    30/30      0     -14.8
+   -17.0    30/30      0     -15.4
+   -18.0    29/30      0     -16.8
+   -19.0    30/30      0     -17.6
+   -20.0    26/30      0     -18.4
+   -21.0    10/30      0     -19.1
+   -22.0     1/30      0     -19.7
+   -23.0     0/30      0       nan
+   -24.0     0/30      0       nan
+text=OZ7IGY spread=20.0 drift=0.0 args='--variants PI4' trials/step=30
+  S/N dB   decoded   wrong   mean est
+   -16.0    30/30      0     -14.7
+   -17.0    30/30      0     -15.6
+   -18.0    29/30      0     -16.9
+   -19.0    26/30      0     -17.3
+   -20.0    11/30      0     -18.2
+   -21.0     1/30      0     -18.2
+   -22.0     0/30      0       nan
+   -23.0     0/30      0       nan
+   -24.0     0/30      0       nan

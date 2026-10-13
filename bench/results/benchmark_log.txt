@@ -1,0 +1,18 @@
+synthetic set written to testdata/syn
+== pi4decoder: synthetic set
+== pi4decoder: own minutes (all variants, +-150 Hz)
+== false decodes on pure noise (200 minutes)
+== pi4dec: synthetic set
+== pi4d: synthetic set (file re-cut to start at the minute)
+== mshvpi4 --tol 110: synthetic set
+Traceback (most recent call last):
+  File "/work/bench/table.py", line 87, in <module>
+    rows, times, rss = summarize(dec, data, truth)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/bench/table.py", line 50, in summarize
+    want = truth(f)
+           ^^^^^^^^
+  File "/work/bench/table.py", line 18, in truth_oz2m
+    return GROUND_TRUTH[name.split("_")[0]]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'pi4'

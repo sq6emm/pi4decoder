@@ -1,0 +1,2 @@
+== false decodes on pure noise (200 minutes)
+test_noise: 200 minutes, seed 42, gate 6.0: 0 converged, 0 passed; max fit_z 0.00, max fit 0.000, max sync_z 0.00; 0.38 s/minute

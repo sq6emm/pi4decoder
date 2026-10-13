@@ -1,0 +1,9 @@
+averaging 4 minutes, 20 trials per step
+  S/N dB   decoded
+  -24   20/20
+  -25   20/20
+  -26   19/20
+  -27   10/20
+  -28   0/20
+  -29   0/20
+  -30   0/20

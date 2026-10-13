@@ -1,0 +1,10 @@
+text=OZ7IGY spread=0.0 drift=0.0 args='--variants PI4 --calls OZ7IGY,SR6LEG' trials/step=30
+  S/N dB   decoded   wrong   mean est
+   -24.0    30/30      0     -23.9
+   -25.0    30/30      0     -25.0
+   -26.0    29/30      0     -26.0
+   -27.0    23/30      0     -26.7
+   -28.0     8/30      0     -27.3
+   -29.0     4/30      0     -27.1
+   -30.0     1/30      0     -23.4
+   -31.0     0/30      0       nan

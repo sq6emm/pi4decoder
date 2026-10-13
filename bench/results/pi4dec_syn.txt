@@ -1,0 +1,152 @@
+== pi4dec: synthetic set
+== drift_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.092, "snr_db": 9.5, "fit": 0.547, "hard_errors": 1}
+RUSAGE user 0.71 s maxrss 11012 kB
+== drift_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.092, "snr_db": 9.4, "fit": 0.556, "hard_errors": 2}
+RUSAGE user 0.83 s maxrss 11012 kB
+== drift_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.092, "snr_db": 9.3, "fit": 0.564, "hard_errors": 0}
+RUSAGE user 0.65 s maxrss 11012 kB
+== noise_0.wav
+RUSAGE user 0.73 s maxrss 11012 kB
+== noise_1.wav
+RUSAGE user 0.62 s maxrss 11012 kB
+== noise_2.wav
+RUSAGE user 0.63 s maxrss 11012 kB
+== noise_3.wav
+RUSAGE user 0.76 s maxrss 11012 kB
+== noise_4.wav
+RUSAGE user 0.69 s maxrss 11012 kB
+== noise_5.wav
+RUSAGE user 0.81 s maxrss 11012 kB
+== noise_6.wav
+RUSAGE user 0.69 s maxrss 11012 kB
+== noise_7.wav
+RUSAGE user 0.70 s maxrss 11012 kB
+== noise_8.wav
+RUSAGE user 0.68 s maxrss 11012 kB
+== noise_9.wav
+RUSAGE user 0.74 s maxrss 11012 kB
+== s-10_df-15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.81, "dt_s": 0.500, "snr_db": 16.5, "fit": 0.767, "hard_errors": 0}
+RUSAGE user 0.64 s maxrss 11012 kB
+== s-10_df-5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 676.81, "dt_s": 0.488, "snr_db": 15.1, "fit": 0.739, "hard_errors": 0}
+RUSAGE user 0.73 s maxrss 11012 kB
+== s-10_df-9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 673.81, "dt_s": 0.500, "snr_db": 16.4, "fit": 0.736, "hard_errors": 0}
+RUSAGE user 0.70 s maxrss 11012 kB
+== s-10_df0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.500, "snr_db": 16.2, "fit": 0.759, "hard_errors": 0}
+RUSAGE user 0.70 s maxrss 11012 kB
+== s-10_df15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 697.81, "dt_s": 0.512, "snr_db": 15.3, "fit": 0.741, "hard_errors": 0}
+RUSAGE user 0.73 s maxrss 11012 kB
+== s-10_df5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 688.81, "dt_s": 0.496, "snr_db": 15.5, "fit": 0.736, "hard_errors": 0}
+RUSAGE user 0.65 s maxrss 11012 kB
+== s-10_df9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 691.81, "dt_s": 0.488, "snr_db": 15.3, "fit": 0.736, "hard_errors": 0}
+RUSAGE user 0.63 s maxrss 11012 kB
+== s-16_df-15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.81, "dt_s": 0.488, "snr_db": 9.8, "fit": 0.554, "hard_errors": 1}
+RUSAGE user 0.65 s maxrss 11012 kB
+== s-16_df-5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 676.81, "dt_s": 0.488, "snr_db": 9.7, "fit": 0.547, "hard_errors": 3}
+RUSAGE user 0.59 s maxrss 11012 kB
+== s-16_df-9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 673.81, "dt_s": 0.500, "snr_db": 9.7, "fit": 0.571, "hard_errors": 0}
+RUSAGE user 0.73 s maxrss 11012 kB
+== s-16_df0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.512, "snr_db": 9.6, "fit": 0.568, "hard_errors": 1}
+RUSAGE user 0.72 s maxrss 11012 kB
+== s-16_df15.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 697.81, "dt_s": 0.488, "snr_db": 9.9, "fit": 0.565, "hard_errors": 1}
+RUSAGE user 0.73 s maxrss 11012 kB
+== s-16_df5.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 688.81, "dt_s": 0.512, "snr_db": 9.4, "fit": 0.567, "hard_errors": 1}
+RUSAGE user 0.72 s maxrss 11012 kB
+== s-16_df9.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 691.81, "dt_s": 0.500, "snr_db": 10.1, "fit": 0.575, "hard_errors": 1}
+RUSAGE user 0.75 s maxrss 11012 kB
+== spread_100_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 691.81, "dt_s": 0.196, "snr_db": 4.3, "fit": 0.305, "hard_errors": 39}
+RUSAGE user 0.61 s maxrss 11012 kB
+== spread_100_1.wav
+RUSAGE user 0.76 s maxrss 11012 kB
+== spread_100_2.wav
+RUSAGE user 0.75 s maxrss 11012 kB
+== spread_10_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.221, "snr_db": 6.8, "fit": 0.400, "hard_errors": 29}
+RUSAGE user 0.69 s maxrss 11012 kB
+== spread_10_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 679.81, "dt_s": 0.200, "snr_db": 7.8, "fit": 0.411, "hard_errors": 22}
+RUSAGE user 0.66 s maxrss 11012 kB
+== spread_10_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.175, "snr_db": 7.5, "fit": 0.392, "hard_errors": 22}
+RUSAGE user 0.63 s maxrss 11012 kB
+== spread_20_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 685.81, "dt_s": 0.225, "snr_db": 4.9, "fit": 0.345, "hard_errors": 31}
+RUSAGE user 0.73 s maxrss 11012 kB
+== spread_20_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 685.81, "dt_s": 0.196, "snr_db": 4.8, "fit": 0.284, "hard_errors": 29}
+RUSAGE user 0.60 s maxrss 11012 kB
+== spread_20_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.204, "snr_db": 4.5, "fit": 0.317, "hard_errors": 31}
+RUSAGE user 0.73 s maxrss 11012 kB
+== spread_50_0.wav
+RUSAGE user 0.68 s maxrss 11012 kB
+== spread_50_1.wav
+RUSAGE user 0.78 s maxrss 11012 kB
+== spread_50_2.wav
+RUSAGE user 0.69 s maxrss 11012 kB
+== syn_-20_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 670.81, "dt_s": 0.554, "snr_db": 6.6, "fit": 0.406, "hard_errors": 11}
+RUSAGE user 0.68 s maxrss 11012 kB
+== syn_-20_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 664.81, "dt_s": -0.408, "snr_db": 6.1, "fit": 0.365, "hard_errors": 11}
+RUSAGE user 0.72 s maxrss 11012 kB
+== syn_-20_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 700.81, "dt_s": 0.908, "snr_db": 5.3, "fit": 0.363, "hard_errors": 16}
+RUSAGE user 0.78 s maxrss 11012 kB
+== syn_-22_0.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 694.81, "dt_s": -0.096, "snr_db": 3.3, "fit": 0.291, "hard_errors": 25}
+RUSAGE user 0.73 s maxrss 11012 kB
+== syn_-22_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 667.81, "dt_s": -0.300, "snr_db": 4.7, "fit": 0.331, "hard_errors": 22}
+RUSAGE user 0.74 s maxrss 11012 kB
+== syn_-22_2.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 682.81, "dt_s": 0.262, "snr_db": 4.2, "fit": 0.322, "hard_errors": 16}
+RUSAGE user 0.67 s maxrss 11012 kB
+== syn_-24_0.wav
+RUSAGE user 0.70 s maxrss 11012 kB
+== syn_-24_1.wav
+{"text": "OZ7IGY", "variant": "PI4", "tone0_hz": 691.81, "dt_s": 0.550, "snr_db": 2.2, "fit": 0.263, "hard_errors": 23}
+RUSAGE user 0.72 s maxrss 11012 kB
+== syn_-24_2.wav
+RUSAGE user 0.74 s maxrss 11012 kB
+== syn_-26_0.wav
+RUSAGE user 0.74 s maxrss 11012 kB
+== syn_-26_1.wav
+RUSAGE user 0.70 s maxrss 11012 kB
+== syn_-26_2.wav
+RUSAGE user 0.63 s maxrss 11012 kB
+== syn_-28_0.wav
+RUSAGE user 0.69 s maxrss 11012 kB
+== syn_-28_1.wav
+RUSAGE user 0.73 s maxrss 11012 kB
+== syn_-28_2.wav
+RUSAGE user 0.70 s maxrss 11012 kB
+== syn_-30_0.wav
+RUSAGE user 0.72 s maxrss 11012 kB
+== syn_-30_1.wav
+RUSAGE user 0.73 s maxrss 11012 kB
+== syn_-30_2.wav
+RUSAGE user 0.72 s maxrss 11012 kB
+== syn_-32_0.wav
+RUSAGE user 0.69 s maxrss 11012 kB
+== syn_-32_1.wav
+RUSAGE user 0.75 s maxrss 11012 kB
+== syn_-32_2.wav
+RUSAGE user 0.65 s maxrss 11012 kB

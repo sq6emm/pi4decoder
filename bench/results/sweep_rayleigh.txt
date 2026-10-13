@@ -1,0 +1,6 @@
+text=OZ7IGY spread=0.0 drift=0.0 args='--variants PI4 --metric 0' trials/step=20
+  S/N dB   decoded   wrong   mean est
+   -22.0    20/20      0     -22.1
+   -23.0    16/20      0     -22.9
+   -24.0     2/20      0     -23.1
+   -25.0     0/20      0       nan

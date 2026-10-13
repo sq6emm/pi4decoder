@@ -1,0 +1,181 @@
+== mshvpi4 --tol 110: synthetic set
+== drift_0.wav
+drift_0.wav	0.wa00	8	-11	0.1	-12	23	OZ7IGY	*	Nor	670
+RUSAGE user 1.26 s sys 0.22 s maxrss 243204 kB
+== drift_1.wav
+drift_1.wav	1.wa00	8	-11	0.1	-6	23	OZ7IGY	*	Nor	676
+RUSAGE user 1.56 s sys 0.22 s maxrss 242680 kB
+== drift_2.wav
+drift_2.wav	2.wa00	7	-14	0.1	-6	23	OZ7IGY	*	Nor	676
+RUSAGE user 1.58 s sys 0.27 s maxrss 243288 kB
+== noise_0.wav
+noise_0.wav	0.wa00	0	-27	-2.6	-26	0		$		655
+RUSAGE user 1.44 s sys 0.24 s maxrss 243228 kB
+== noise_1.wav
+noise_1.wav	1.wa00	0	-27	-0.6	-6	23		$		676
+RUSAGE user 1.46 s sys 0.20 s maxrss 243608 kB
+== noise_2.wav
+noise_2.wav	2.wa00	0	-27	3.2	-12	1		$		670
+RUSAGE user 1.50 s sys 0.28 s maxrss 242688 kB
+== noise_3.wav
+noise_3.wav	3.wa00	0	-27	-2.1	-50	4		$		632
+RUSAGE user 1.34 s sys 0.31 s maxrss 243096 kB
+== noise_4.wav
+noise_4.wav	4.wa00	0	-27	3.5	-18	0		$		664
+RUSAGE user 1.43 s sys 0.31 s maxrss 243412 kB
+== noise_5.wav
+noise_5.wav	5.wa00	0	-27	-2.8	-3	0		$		679
+RUSAGE user 1.38 s sys 0.21 s maxrss 243244 kB
+== noise_6.wav
+noise_6.wav	6.wa00	0	-27	1.9	-3	23		$		679
+RUSAGE user 1.37 s sys 0.18 s maxrss 242904 kB
+== noise_7.wav
+noise_7.wav	7.wa00	0	-27	-0.0	-6	23		$		676
+RUSAGE user 1.52 s sys 0.22 s maxrss 243624 kB
+== noise_8.wav
+noise_8.wav	8.wa00	0	-27	-1.8	-9	0		$		673
+RUSAGE user 1.30 s sys 0.19 s maxrss 243304 kB
+== noise_9.wav
+noise_9.wav	9.wa00	0	-27	-1.6	43	0		$		726
+RUSAGE user 1.52 s sys 0.22 s maxrss 243708 kB
+== s-10_df-15.wav
+s-10_df-15.wav	df-100	11	10	0.5	-23	8	OZ7IGY	*	Nor	658
+RUSAGE user 1.23 s sys 0.21 s maxrss 243000 kB
+== s-10_df-5.wav
+s-10_df-5.wav	df-500	10	4	0.5	-12	7	OZ7IGY	*	Nor	670
+RUSAGE user 1.43 s sys 0.20 s maxrss 243384 kB
+== s-10_df-9.wav
+s-10_df-9.wav	df-900	11	6	0.5	-21	7	OZ7IGY	*	Nor	661
+RUSAGE user 1.24 s sys 0.19 s maxrss 243036 kB
+== s-10_df0.wav
+s-10_df0.wav	df0.00	11	6	0.5	-6	23	OZ7IGY	*	Nor	676
+RUSAGE user 1.42 s sys 0.19 s maxrss 243236 kB
+== s-10_df15.wav
+s-10_df15.wav	df1500	10	3	0.5	2	7	OZ7IGY	*	Nor	685
+RUSAGE user 1.45 s sys 0.20 s maxrss 243492 kB
+== s-10_df5.wav
+s-10_df5.wav	df5.00	11	9	0.5	-15	23	OZ7IGY	*	Nor	667
+RUSAGE user 1.38 s sys 0.19 s maxrss 243572 kB
+== s-10_df9.wav
+s-10_df9.wav	df9.00	10	0	0.5	2	23	OZ7IGY	*	Nor	685
+RUSAGE user 1.26 s sys 0.18 s maxrss 243776 kB
+== s-16_df-15.wav
+s-16_df-15.wav	df-100	8	-10	0.5	-23	6	OZ7IGY	*	Nor	658
+RUSAGE user 1.31 s sys 0.16 s maxrss 243776 kB
+== s-16_df-5.wav
+s-16_df-5.wav	df-500	7	-12	0.5	-12	6	OZ7IGY	*	Nor	670
+RUSAGE user 1.28 s sys 0.21 s maxrss 243156 kB
+== s-16_df-9.wav
+s-16_df-9.wav	df-900	7	-14	0.5	-15	6	OZ7IGY	*	Nor	667
+RUSAGE user 1.48 s sys 0.24 s maxrss 243212 kB
+== s-16_df0.wav
+s-16_df0.wav	df0.00	8	-12	0.5	-6	23	OZ7IGY	*	Nor	676
+RUSAGE user 1.35 s sys 0.25 s maxrss 242876 kB
+== s-16_df15.wav
+s-16_df15.wav	df1500	7	-15	0.5	8	6	OZ7IGY	*	Nor	691
+RUSAGE user 1.24 s sys 0.21 s maxrss 243448 kB
+== s-16_df5.wav
+s-16_df5.wav	df5.00	8	-10	0.5	-3	23	OZ7IGY	*	Nor	679
+RUSAGE user 1.27 s sys 0.31 s maxrss 243388 kB
+== s-16_df9.wav
+s-16_df9.wav	df9.00	8	-9	0.5	-3	23	OZ7IGY	*	Nor	679
+RUSAGE user 1.28 s sys 0.19 s maxrss 243168 kB
+== spread_100_0.wav
+spread_100_0.wav	10000	4	-19	0.2	-18	8	OZ7IGY	*	Nor	664
+RUSAGE user 1.28 s sys 0.20 s maxrss 243004 kB
+== spread_100_1.wav
+spread_100_1.wav	10000	5	-18	0.2	-21	7	OZ7IGY	*	Nor	661
+RUSAGE user 1.35 s sys 0.23 s maxrss 243024 kB
+== spread_100_2.wav
+spread_100_2.wav	10000	4	-19	0.2	-3	12	OZ7IGY	*	Nor	679
+RUSAGE user 1.28 s sys 0.22 s maxrss 243396 kB
+== spread_10_0.wav
+spread_10_0.wav	1000	6	-18	0.2	-12	23	OZ7IGY	*	Nor	670
+RUSAGE user 1.28 s sys 0.20 s maxrss 243404 kB
+== spread_10_1.wav
+spread_10_1.wav	1000	5	-18	0.2	-12	23	OZ7IGY	*	Nor	670
+RUSAGE user 1.44 s sys 0.28 s maxrss 243156 kB
+== spread_10_2.wav
+spread_10_2.wav	1000	5	-18	0.2	-9	23	OZ7IGY	*	Nor	673
+RUSAGE user 1.14 s sys 0.21 s maxrss 243640 kB
+== spread_20_0.wav
+spread_20_0.wav	2000	6	-17	0.2	-15	23	OZ7IGY	*	Nor	667
+RUSAGE user 1.36 s sys 0.24 s maxrss 243528 kB
+== spread_20_1.wav
+spread_20_1.wav	2000	5	-18	0.2	-23	8	OZ7IGY	*	Nor	658
+RUSAGE user 1.47 s sys 0.20 s maxrss 243300 kB
+== spread_20_2.wav
+spread_20_2.wav	2000	5	-18	0.2	-6	23	OZ7IGY	*	Nor	676
+RUSAGE user 1.30 s sys 0.21 s maxrss 242384 kB
+== spread_50_0.wav
+spread_50_0.wav	5000	5	-18	0.2	-32	10	OZ7IGY	*	Nor	650
+RUSAGE user 1.43 s sys 0.23 s maxrss 242792 kB
+== spread_50_1.wav
+spread_50_1.wav	5000	5	-18	0.2	-26	14	OZ7IGY	*	Nor	655
+RUSAGE user 1.32 s sys 0.21 s maxrss 243296 kB
+== spread_50_2.wav
+spread_50_2.wav	5000	5	-18	0.2	-21	10	OZ7IGY	*	Nor	661
+RUSAGE user 1.51 s sys 0.22 s maxrss 243212 kB
+== syn_-20_0.wav
+syn_-20_0.wav	-2000	5	-18	0.6	-23	5	?	#	Nor	658
+RUSAGE user 1.82 s sys 0.23 s maxrss 243276 kB
+== syn_-20_1.wav
+syn_-20_1.wav	-2000	5	-18	-0.4	-26	6	?	#	Nor	655
+RUSAGE user 1.76 s sys 0.20 s maxrss 243356 kB
+== syn_-20_2.wav
+syn_-20_2.wav	-2000	4	-19	0.9	-3	4	?	#	Nor	679
+RUSAGE user 1.65 s sys 0.19 s maxrss 243404 kB
+== syn_-22_0.wav
+syn_-22_0.wav	-2200	1	-24	-0.1	2	2		$		685
+RUSAGE user 1.26 s sys 0.17 s maxrss 242964 kB
+== syn_-22_1.wav
+syn_-22_1.wav	-2200	1	-24	-0.3	-23	5		$		658
+RUSAGE user 1.33 s sys 0.21 s maxrss 243420 kB
+== syn_-22_2.wav
+syn_-22_2.wav	-2200	4	-19	0.3	-6	23	?	#	Nor	676
+RUSAGE user 1.67 s sys 0.20 s maxrss 243224 kB
+== syn_-24_0.wav
+syn_-24_0.wav	-2400	0	-27	-2.2	34	1		$		717
+RUSAGE user 1.35 s sys 0.21 s maxrss 243384 kB
+== syn_-24_1.wav
+syn_-24_1.wav	-2400	0	-27	0.6	-3	23		$		679
+RUSAGE user 1.40 s sys 0.21 s maxrss 243284 kB
+== syn_-24_2.wav
+syn_-24_2.wav	-2400	0	-27	3.1	22	0		$		705
+RUSAGE user 1.19 s sys 0.21 s maxrss 242992 kB
+== syn_-26_0.wav
+syn_-26_0.wav	-2600	0	-27	-0.6	-12	5		$		670
+RUSAGE user 1.27 s sys 0.22 s maxrss 243572 kB
+== syn_-26_1.wav
+syn_-26_1.wav	-2600	0	-27	-0.1	-12	23		$		670
+RUSAGE user 1.19 s sys 0.24 s maxrss 243496 kB
+== syn_-26_2.wav
+syn_-26_2.wav	-2600	0	-26	0.5	-12	5		$		670
+RUSAGE user 1.39 s sys 0.25 s maxrss 243500 kB
+== syn_-28_0.wav
+syn_-28_0.wav	-2800	0	-27	2.9	-53	0		$		629
+RUSAGE user 1.40 s sys 0.24 s maxrss 243076 kB
+== syn_-28_1.wav
+syn_-28_1.wav	-2800	0	-27	-2.6	-3	23		$		679
+RUSAGE user 1.39 s sys 0.24 s maxrss 243108 kB
+== syn_-28_2.wav
+syn_-28_2.wav	-2800	0	-27	1.4	31	23		$		714
+RUSAGE user 1.39 s sys 0.27 s maxrss 243040 kB
+== syn_-30_0.wav
+syn_-30_0.wav	-3000	0	-27	3.5	-53	0		$		629
+RUSAGE user 1.41 s sys 0.24 s maxrss 243488 kB
+== syn_-30_1.wav
+syn_-30_1.wav	-3000	0	-27	-1.1	22	0		$		705
+RUSAGE user 1.31 s sys 0.22 s maxrss 243512 kB
+== syn_-30_2.wav
+syn_-30_2.wav	-3000	0	-27	2.8	-18	1		$		664
+RUSAGE user 1.28 s sys 0.21 s maxrss 242972 kB
+== syn_-32_0.wav
+syn_-32_0.wav	-3200	0	-27	-2.0	-53	3		$		629
+RUSAGE user 1.28 s sys 0.25 s maxrss 243228 kB
+== syn_-32_1.wav
+syn_-32_1.wav	-3200	0	-27	-0.8	17	2		$		699
+RUSAGE user 1.42 s sys 0.25 s maxrss 243456 kB
+== syn_-32_2.wav
+syn_-32_2.wav	-3200	0	-27	-0.1	11	1		$		694
+RUSAGE user 1.33 s sys 0.26 s maxrss 243632 kB
