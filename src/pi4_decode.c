@@ -22,6 +22,7 @@
 #define NFFT     4096                     /* 2000 samples zero padded        */
 #define BIN_HZ   (12000.0 / NFFT)         /* 2.9297 Hz                       */
 #define MAX_CAND 64
+#define CAND_PER_HYP 12
 
 const int pi4_spread_bins[PI4_NSPREAD] = { 1, 3, 5, 9, 17, 33 };
 
@@ -46,7 +47,8 @@ void pi4_params_default(pi4_params *p)
     p->fano_cycles = 200000;
     p->min_sync_z = 4.0;
     p->min_fit_z = 6.0;
-    p->list_min_z = 7.0;
+    p->list_min_z = 6.5;
+    p->metric = -1;
 }
 
 /* ------------------------------------------------------------------ */
@@ -199,7 +201,10 @@ pi4_spec *pi4_spec_build(const float *audio, size_t n, int fs, const pi4_params 
         }
         for (h = 0; h < s->nhop; h++) {
             col = s->p + (size_t)h * s->nb;
-            for (b = 0; b < s->nb; b++) col[b] /= s->noise[b];
+            for (b = 0; b < s->nb; b++) {
+                col[b] /= s->noise[b];
+                if (col[b] > 1e4f) col[b] = 1e4f;      /* cap at 40 dB over the floor */
+            }
         }
         if (p->verbose) {
             double m = 0, v = 0; size_t cnt = 0;
@@ -261,23 +266,24 @@ static void box_sum(const pi4_spec *s, int w, float *out)
 }
 
 /* robust z-normalisation statistics of a score array */
+/* median and 1.4826*MAD of a (subsampled) score array: immune to a strong
+ * signal or interferer occupying a sizeable fraction of the cells */
 static void robust_stats(const float *x, size_t n, double *mean, double *sd)
 {
-    double m = 0, v = 0; size_t i, cnt = 0;
-    for (i = 0; i < n; i++) m += x[i];
-    m /= (double)n;
-    for (i = 0; i < n; i++) v += (x[i] - m) * (x[i] - m);
-    v = sqrt(v / (double)n);
-    if (v <= 0) { *mean = m; *sd = 1; return; }
-    {   /* one trimming pass against the signal's own peak */
-        double m2 = 0, v2 = 0;
-        for (i = 0; i < n; i++) if (fabs(x[i] - m) < 3 * v) { m2 += x[i]; cnt++; }
-        if (cnt < 10) { *mean = m; *sd = v; return; }
-        m2 /= (double)cnt;
-        for (i = 0; i < n; i++) if (fabs(x[i] - m) < 3 * v) v2 += (x[i] - m2) * (x[i] - m2);
-        *mean = m2; *sd = sqrt(v2 / (double)cnt);
-        if (*sd <= 0) *sd = 1;
-    }
+    const size_t NMAX = 32768;
+    size_t step = n > NMAX ? n / NMAX : 1, m = n / step, i;
+    float *t = (float *)malloc(sizeof(float) * (m ? m : 1));
+    double med;
+    if (!t || m < 10) { *mean = 0; *sd = 1; free(t); return; }
+    for (i = 0; i < m; i++) t[i] = x[i * step];
+    qsort(t, m, sizeof(float), cmp_float);
+    med = t[m / 2];
+    for (i = 0; i < m; i++) t[i] = (float)fabs(t[i] - med);
+    qsort(t, m, sizeof(float), cmp_float);
+    *mean = med;
+    *sd = 1.4826 * t[m / 2];
+    if (*sd <= 0) *sd = 1;
+    free(t);
 }
 
 static int cand_cmp(const void *a, const void *b)
@@ -290,9 +296,13 @@ static int cand_cmp(const void *a, const void *b)
 static void push_cand(cand *list, int *n, const cand *c)
 {
     int i;
-    for (i = 0; i < *n; i++) {                 /* same region & hypothesis: keep best */
-        if (list[i].v == c->v && list[i].call == c->call &&
-            abs(list[i].h - c->h) <= SPH && abs(list[i].b - c->b) <= 4) {
+    for (i = 0; i < *n; i++) {
+        /* same cell (any variant), or the same frequency within 30 s under the
+         * same hypothesis (a beacon sends once a minute; repeated peaks at one
+         * frequency are an interferer): keep the best */
+        if (list[i].call == c->call && abs(list[i].b - c->b) <= 4 &&
+            (abs(list[i].h - c->h) <= SPH ||
+             (list[i].v == c->v && list[i].w == c->w && abs(list[i].h - c->h) < 30 * PI4_FS / HOP))) {
             if (c->z > list[i].z) list[i] = *c;
             return;
         }
@@ -315,9 +325,10 @@ static void search_cells(const pi4_spec *s, const pi4_params *p, const float *sw
     int bt0, bt1, hc0, hc1, nbt, nhc, h, b, n;
     double fmin, fmax, mean, sd;
     float *d, *score;
+    cand *local = (cand *)malloc(sizeof(cand) * MAX_CAND); int nlocal = 0;
     band_for(p, &fmin, &fmax, &bt0, &bt1);
     bt0 -= s->b0; bt1 -= s->b0;
-    if (bt0 < 0) bt0 = 0;
+    if (bt0 < pi4_spread_bins[w] / 2 + 1) bt0 = pi4_spread_bins[w] / 2 + 1;   /* no edge-clipped windows */
     if (bt1 > s->nb - 3 * spb) bt1 = s->nb - 3 * spb;
     nbt = bt1 - bt0;
     hc0 = (int)floor(p->t_lo_s * PI4_FS / HOP) - s->h0;
@@ -325,7 +336,7 @@ static void search_cells(const pi4_spec *s, const pi4_params *p, const float *sw
     if (hc0 < 0) hc0 = 0;
     if (hc1 > s->nhop - PI4_NSYM * SPH) hc1 = s->nhop - PI4_NSYM * SPH;
     nhc = hc1 - hc0;
-    if (nbt <= 0 || nhc <= 0) return;
+    if (nbt <= 0 || nhc <= 0) { free(local); return; }
 
     /* per-symbol discriminant d[h][b]: sync mode: (even pair - odd pair),
      * list mode: 4/3*P[tone] - 1/3*sum(all four), evaluated per column */
@@ -383,10 +394,14 @@ static void search_cells(const pi4_spec *s, const pi4_params *p, const float *sw
             if (c.db < -0.5) c.db = -0.5;
             if (c.dh > 0.5) c.dh = 0.5;
             if (c.dh < -0.5) c.dh = -0.5;
-            push_cand(list, ncand, &c);
+            push_cand(local, &nlocal, &c);
         }
     }
-    free(d); free(score);
+    /* at most CAND_PER_HYP cells per hypothesis reach the global list, so one
+     * strong interferer cannot crowd out a real signal under another one */
+    qsort(local, (size_t)nlocal, sizeof(cand), cand_cmp);
+    for (h = 0; h < nlocal && h < CAND_PER_HYP; h++) push_cand(list, ncand, &local[h]);
+    free(d); free(score); free(local);
 }
 
 /* ------------------------------------------------------------------ */
@@ -429,6 +444,22 @@ static double exact_sync(const pi4_spec *s, const float *x, size_t nx, long t0,
         acc += pi4_sync[n] ? (q[1] + q[3] - q[0] - q[2]) : (q[0] + q[2] - q[1] - q[3]);
     }
     return acc;
+}
+
+/* self-normalised sync statistic of a set of per-symbol tone powers: the
+ * sync-consistent pair minus the other pair, over the noise sd measured on
+ * the pair that cannot carry signal */
+static double sync_stat(float (*pw)[4])
+{
+    double acc = 0, var = 0; int n;
+    for (n = 0; n < PI4_NSYM; n++) {
+        int sy = pi4_sync[n];
+        double e = pw[n][0] + pw[n][2], o = pw[n][1] + pw[n][3];
+        double wd = pw[n][1 - sy] - pw[n][3 - sy];
+        acc += sy ? o - e : e - o;
+        var += wd * wd;
+    }
+    return var > 0 ? acc / sqrt(var) : 0;
 }
 
 /* tone powers from the spectrogram at an integer cell, summed over a
@@ -509,14 +540,27 @@ static int16_t bit_metric(double l)
 }
 
 /* Fill Fano metrics from soft values with LLR scale g; returns nothing. */
-static void build_metrics(const soft *sf, double scale, int16_t met[PI4_NSYM][2])
+/* Per-bit Fano metrics from one of three LLR models (powers in local noise
+ * units, rho = estimated mean signal excess):
+ *  MET_RAYLEIGH  L = (P1-P0) * rho/(1+rho): signal amplitude unknown per symbol
+ *                (Rayleigh prior) - robust to fading, AGC, dropouts; the default
+ *  MET_BESSEL    L = lnI0(2 sqrt(rho P1)) - lnI0(2 sqrt(rho P0)): exact for a
+ *                constant-amplitude tone in AWGN, single-bin powers only
+ *  MET_GAUSS     L = 2 rho (P1-P0) / var: Gaussian approximation, used for
+ *                multi-bin (spread) windows */
+enum { MET_RAYLEIGH, MET_BESSEL, MET_GAUSS };
+
+static void build_metrics(const soft *sf, double scale, int kind, int16_t met[PI4_NSYM][2])
 {
     int i;
-    double g = scale * 2 * sf->rho / (sf->sd * sf->sd), rho = scale * sf->rho;
+    double rho = scale * sf->rho, g;
+    if (kind == MET_BESSEL && !sf->bessel) kind = MET_GAUSS;
+    g = kind == MET_RAYLEIGH ? rho / (1 + rho) * (sf->bessel ? 1.0 : 2.0 / (sf->sd * sf->sd))
+                             : scale * 2 * sf->rho / (sf->sd * sf->sd);
     for (i = 0; i < PI4_NSYM; i++) {
         int n = pi4_interleave[i];
-        double l = sf->bessel ? lnI0(2 * sqrt(rho * sf->p1[n])) - lnI0(2 * sqrt(rho * sf->p0[n]))
-                              : g * sf->d[n];
+        double l = kind == MET_BESSEL ? lnI0(2 * sqrt(rho * sf->p1[n])) - lnI0(2 * sqrt(rho * sf->p0[n]))
+                                      : g * sf->d[n];
         if (l > 12) l = 12;
         if (l < -12) l = -12;
         met[i][1] = bit_metric(l);
@@ -543,29 +587,35 @@ static void evaluate(const soft *sf, uint64_t n, attempt *a)
     a->fit_z = num / (sf->sd * sqrt((double)PI4_NSYM));
 }
 
-static int try_decode(const soft *sf, const pi4_params *p, attempt *best)
+static int try_decode(const soft *sf, const pi4_params *p, double z, attempt *best)
 {
+    /* effort follows the sync statistic: a cell at z < 5.5 is almost never a
+     * decodable signal (a -24 dB one scores 7-9), so it gets a quarter of the
+     * cycle budget and the two unit-scale attempts only */
+    long cycles_budget = z < 5.5 ? p->fano_cycles / 4 : p->fano_cycles;
+    int nattempt = z < 5.5 ? 2 : 7;
     /* attempts: LLR scale x direction; the reversed code (bidirectional
      * sequential decoding) fails on different noise bursts than the forward */
-    static const double scales[] = { 1.0, 1.0, 0.5, 0.5, 2.0, 2.0, 0.25 };
-    static const int revs[]      = { 0,   1,   0,   1,   0,   1,   0 };
+    static const double scales[] = { 1.0, 1.0, 1.0, 0.5, 2.0, 0.5, 0.25 };
+    static const int revs[]      = { 0,   1,   0,   0,   0,   1,   0 };
+    static const int kinds[]     = { MET_RAYLEIGH, MET_RAYLEIGH, MET_BESSEL, MET_RAYLEIGH, MET_RAYLEIGH, MET_BESSEL, MET_RAYLEIGH };
     int k, found = 0;
     int16_t met[PI4_NSYM][2];
     best->ok = 0; best->fit_z = -1e9;
-    for (k = 0; k < (int)(sizeof scales / sizeof scales[0]); k++) {
+    for (k = 0; k < nattempt; k++) {
         uint8_t bits[PI4_NBITS];
         long metric = 0, cycles = 0;
         attempt a;
         int i;
-        if (k == 0 || scales[k] != scales[k - 1]) build_metrics(sf, scales[k], met);
-        if (!pi4_fano(&met[0][0], 2 * MET_SCALE, p->fano_cycles, revs[k], bits, &metric, &cycles)) continue;
+        if (k == 0 || scales[k] != scales[k - 1] || kinds[k] != kinds[k - 1]) build_metrics(sf, scales[k], p->metric >= 0 ? p->metric : kinds[k], met);
+        if (!pi4_fano(&met[0][0], 2 * MET_SCALE, cycles_budget, revs[k], bits, &metric, &cycles)) continue;
         a.n = 0;
         for (i = 0; i < PI4_NINFO; i++) a.n = (a.n << 1) | bits[i];
         evaluate(sf, a.n, &a);
         a.ok = 1; a.metric = metric;
         if (p->verbose)
-            fprintf(stderr, "  fano scale %.2f%s: n=%llu fit=%.3f fit_z=%.1f hard=%d metric=%ld cycles=%ld\n",
-                    scales[k], revs[k] ? " rev" : "", (unsigned long long)a.n, a.fit, a.fit_z, a.hard, metric, cycles);
+            fprintf(stderr, "  fano %s scale %.2f%s: n=%llu fit=%.3f fit_z=%.1f hard=%d metric=%ld cycles=%ld\n",
+                    kinds[k] == MET_RAYLEIGH ? "rayleigh" : kinds[k] == MET_BESSEL ? "bessel" : "gauss", scales[k], revs[k] ? " rev" : "", (unsigned long long)a.n, a.fit, a.fit_z, a.hard, metric, cycles);
         if (!found || a.fit_z > best->fit_z) { *best = a; found = 1; }
         if (a.fit_z > 12) break;      /* unambiguous */
     }
@@ -574,7 +624,7 @@ static int try_decode(const soft *sf, const pi4_params *p, attempt *best)
 
 /* ------------------------------------------------------------------ */
 
-static double snr_of(float (*pw)[4], const uint8_t *tones, int navg, double *energy)
+static double snr_of(float (*pw)[4], const uint8_t *tones, int navg, int wbins, double *energy)
 {
     /* noise from the two tones each symbol's sync bit rules out (unbiased by
      * the signal's own leakage, unlike the whitening floor near a strong
@@ -590,7 +640,9 @@ static double snr_of(float (*pw)[4], const uint8_t *tones, int navg, double *ene
     noise /= 2 * PI4_NSYM;
     sig /= PI4_NSYM;
     if (noise <= 0) noise = 1e-9;
-    sig /= noise * navg;                      /* per-minute signal in noise units */
+    sig /= noise / wbins;                     /* over the per-bin noise density; both sides
+                                                 scale with navg so the ratio is per minute */
+    (void)navg;
     if (sig < 1e-3) sig = 1e-3;
     return 10 * log10(sig * 4.8 / PI4_SYMLEN);
 }
@@ -669,27 +721,31 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
         double f0 = (s->b0 + c->b + c->db) * BIN_HZ;
         double t0 = (s->h0 + c->h + c->dh) * HOP;      /* samples */
         soft sf; attempt a; pi4_result r; uint8_t tones[PI4_NSYM];
-        int exact, wbest = c->w;
+        int exact, wbest = c->w, k; double zbest;
+        /* a cell inside the region of an already strong decode is that signal */
+        for (k = 0; k < nres; k++) {
+            double dsp = pi4_spacing_hz(res[k].variant);
+            if (res[k].fit_z > 20 && fabs(res[k].t_s - t0 / PI4_FS) < PI4_NSYM * PI4_SYMBOL_S &&
+                f0 - sp < res[k].tone0_hz + 4 * dsp && res[k].tone0_hz - dsp < f0 + 4 * sp) break;
+        }
+        if (k < nres) continue;
         tried++;
+        zbest = -1e30;
         if (c->call < 0) {
             /* choose the spread window: largest self-normalised sync statistic */
-            double zbest = -1e30; int wi;
+            int wi;
             for (wi = 0; wi < nspread; wi++) {
-                double acc = 0, var = 0; int n;
+                double zz;
                 if (pi4_spread_bins[wi] >= spb) break;
                 spec_powers_w(s, c->h, c->b, spb, pi4_spread_bins[wi], pw);
-                for (n = 0; n < PI4_NSYM; n++) {
-                    int sy = pi4_sync[n];
-                    double e = pw[n][0] + pw[n][2], o = pw[n][1] + pw[n][3];
-                    double wd = pw[n][1 - sy] - pw[n][3 - sy];
-                    acc += sy ? o - e : e - o;
-                    var += wd * wd;
-                }
-                if (var > 0) acc /= sqrt(var);
-                if (acc > zbest) { zbest = acc; wbest = wi; }
+                zz = sync_stat(pw);
+                if (zz > zbest) { zbest = zz; wbest = wi; }
             }
         }
-        exact = (x != NULL && wbest == 0 && s->navg == 1);
+        /* a narrow winner (1 or 3 bins) is refined on the time-domain audio at
+         * the exact frequency, which beats any integer-bin window for an
+         * unspread signal; the refined result is kept if it scores higher */
+        exact = (x != NULL && wbest <= 1 && s->navg == 1);
         if (exact) {
             /* coordinate search: time (+-1/2 hop in 1/4 hops), then frequency (+-1/2 bin in 1/4 bins) */
             static const int tsteps[] = { -2, -1, 0, 1, 2 };
@@ -704,14 +760,17 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
                 double sc = exact_sync(s, x, nx, (long)floor(bt + 0.5), ff, sp, NULL);
                 if (sc > best) { best = sc; bf = ff; }
             }
-            t0 = bt; f0 = bf;
-            exact_sync(s, x, nx, (long)floor(t0 + 0.5), f0, sp, pw);
-        } else {
-            spec_powers_w(s, c->h, c->b, spb, pi4_spread_bins[wbest], pw);
+            exact_sync(s, x, nx, (long)floor(bt + 0.5), bf, sp, pw);
+            if (wbest == 0 || c->call >= 0 || sync_stat(pw) >= zbest) { t0 = bt; f0 = bf; wbest = 0; }
+            else exact = 0;
         }
+        if (!exact) spec_powers_w(s, c->h, c->b, spb, pi4_spread_bins[wbest], pw);
         c->w = wbest;
-        make_soft(pw, wbest == 0, &sf);
+        make_soft(pw, wbest == 0 && s->navg == 1, &sf);
         if (p->verbose) fprintf(stderr, "  refined: t=%.3f s f0=%.2f Hz w=%d exact=%d rho=%.2f sd=%.2f\n", t0 / PI4_FS, f0, pi4_spread_bins[wbest], exact, sf.rho, sf.sd);
+        if (p->verbose > 1) { uint8_t tt[PI4_NSYM]; int q; pi4_encode("OZ7IGY", tt);
+            for (q = 0; q < PI4_NSYM; q++) fprintf(stderr, "    sym %3d tone %d: %8.1f %8.1f %8.1f %8.1f %s\n", q, tt[q], pw[q][0], pw[q][1], pw[q][2], pw[q][3],
+                (pw[q][tt[q]] < pw[q][tt[q] ^ 2]) ? "ERR" : ""); }
         if (p->verbose) {
             int q; double mw = 0, vw = 0;
             for (q = 0; q < PI4_NSYM; q++) { double c1 = pw[q][1 - pi4_sync[q]], c2 = pw[q][3 - pi4_sync[q]]; mw += c1 + c2; vw += c1 * c1 + c2 * c2; }
@@ -725,7 +784,7 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
             r.listed = 1;
             if (a.fit_z < p->list_min_z * 0.7) continue;
         } else {
-            if (!try_decode(&sf, p, &a)) continue;
+            if (!try_decode(&sf, p, c->z, &a)) continue;
         }
         pi4_unpack(a.n, r.text);
         r.plausible = pi4_text_plausible(r.text);
@@ -735,7 +794,7 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
         r.spread_hz = pi4_spread_bins[c->w] * BIN_HZ;
         r.fano_metric = a.metric;
         pi4_encode_n(a.n, tones);
-        r.snr_db = snr_of(pw, tones, s->navg, &r.energy);
+        r.snr_db = snr_of(pw, tones, s->navg, pi4_spread_bins[wbest], &r.energy);
         if (a.n == 0) continue;                   /* all-zero codeword: never a real message */
         if (p->verbose)
             fprintf(stderr, "  -> %-8s fit_z=%.1f fit=%.3f hard=%d snr=%.1f plausible=%d rho=%.2f sd=%.2f\n",

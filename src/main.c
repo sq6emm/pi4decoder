@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     pi4_params p;
     const char *files[64]; double bounds[64]; int nfiles = 0;
     const char *calls[64]; int ncalls = 0; char *callbuf = NULL;
-    int scan = 0, avg = 0, i, band_set = 0, radius_set = 0;
+    int scan = 0, avg = 0, i, band_set = 0, radius_set = 0, fs_override = 0, maxcand_set = 0;
     double dt = 2.5;
     pi4_result res[16];
 
@@ -89,7 +89,7 @@ int main(int argc, char **argv)
         else if (!strcmp(a, "--gate") && i + 1 < argc) p.min_fit_z = atof(argv[++i]);
         else if (!strcmp(a, "--relax")) p.relax = 1;
         else if (!strcmp(a, "--cycles") && i + 1 < argc) p.fano_cycles = atol(argv[++i]);
-        else if (!strcmp(a, "--max-cand") && i + 1 < argc) p.max_cand = atoi(argv[++i]);
+        else if (!strcmp(a, "--max-cand") && i + 1 < argc) { p.max_cand = atoi(argv[++i]); maxcand_set = 1; }
         else if (!strcmp(a, "--min-sync") && i + 1 < argc) p.min_sync_z = atof(argv[++i]);
         else if (!strcmp(a, "--list-gate") && i + 1 < argc) p.list_min_z = atof(argv[++i]);
         else if (!strcmp(a, "--calls") && i + 1 < argc) {
@@ -97,7 +97,9 @@ int main(int argc, char **argv)
             callbuf = argv[++i];
             for (t = strtok(callbuf, ","); t && ncalls < 64; t = strtok(NULL, ",")) calls[ncalls++] = t;
         }
-        else if (!strcmp(a, "--verbose") || !strcmp(a, "-v")) p.verbose = 1;
+        else if (!strcmp(a, "--fs") && i + 1 < argc) fs_override = atoi(argv[++i]);
+        else if (!strcmp(a, "--metric") && i + 1 < argc) p.metric = atoi(argv[++i]);
+        else if (!strcmp(a, "--verbose") || !strcmp(a, "-v")) p.verbose++;
         else if (!strcmp(a, "--help") || !strcmp(a, "-h")) { usage(); return 0; }
         else if (a[0] == '-' && a[1] == '-') { fprintf(stderr, "unknown option %s\n", a); usage(); return 2; }
         else if (nfiles < 64) {
@@ -111,6 +113,7 @@ int main(int argc, char **argv)
     for (i = 0; i < nfiles; i++) if (bounds[i] < 0) bounds[i] = 0;
     p.calls = calls; p.ncalls = ncalls;
     if (scan && !band_set && !radius_set) { p.fmin_hz = 300; p.fmax_hz = 2700; }
+    if (scan && !maxcand_set) p.max_cand = 24;
 
     if (avg) {
         pi4_spec *acc = NULL;
@@ -134,6 +137,7 @@ int main(int argc, char **argv)
     for (i = 0; i < nfiles; i++) {
         int fs; size_t n, k; float *x = wav_read(files[i], &fs, &n); int nr;
         if (!x) { fprintf(stderr, "cannot read %s\n", files[i]); return 1; }
+        if (fs_override) fs = fs_override;
         if (scan) { p.t_lo_s = 0; p.t_hi_s = (double)n / fs - 20.0; if (p.t_hi_s < 0) p.t_hi_s = 0; }
         else { p.t_lo_s = bounds[i] - dt; p.t_hi_s = bounds[i] + dt; }
         nr = pi4_decode(x, n, fs, &p, res, 16);

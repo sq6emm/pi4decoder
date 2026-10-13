@@ -77,6 +77,7 @@ typedef struct {
     const char *const *calls; int ncalls; /* known-message list (0 = blind)   */
     double list_min_z;   /* gate for list mode                                */
     int   verbose;       /* debug prints to stderr                            */
+    int   metric;        /* -1: automatic sequence; 0 rayleigh, 1 bessel, 2 gauss (testing) */
 } pi4_params;
 
 #define PI4_NSPREAD 6

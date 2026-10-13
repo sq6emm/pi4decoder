@@ -134,6 +134,46 @@ int main(void)
         CHECK(bad == 0, "%d of 6 noise minutes produced a decode", bad);
     }
 
+    /* 5. known-message (list) mode reads a -27 dB OZ7IGY that blind decoding
+     *    cannot, and does not invent the other listed call */
+    {
+        size_t n; float *x = synth("OZ7IGY", 12000, 3.1, 690.0, -27, 40, &n);
+        const char *calls[] = { "SR6LEG", "OZ7IGY" };
+        pi4_params p; pi4_result r[4]; int nr, i, got = 0;
+        pi4_params_default(&p);
+        p.variants = 1u << PI4_V_PI4;
+        p.t_lo_s = 0.5; p.t_hi_s = 5.5;
+        p.calls = calls; p.ncalls = 2;
+        nr = pi4_decode(x, n, 12000, &p, r, 4);
+        for (i = 0; i < nr; i++) {
+            if (!strcmp(r[i].text, "OZ7IGY") && r[i].listed) got = 1;
+            CHECK(strcmp(r[i].text, "SR6LEG"), "list mode invented SR6LEG");
+        }
+        CHECK(got, "list mode: OZ7IGY at -27 dB not found (%d results)", nr);
+        free(x);
+    }
+
+    /* 6. averaging four -26 dB minutes decodes blind where one does not */
+    {
+        pi4_params p; pi4_result r[4]; int nr, k, single = 0;
+        pi4_spec *acc = NULL;
+        pi4_params_default(&p);
+        p.variants = 1u << PI4_V_PI4;
+        p.t_lo_s = 0.5; p.t_hi_s = 5.5;
+        for (k = 0; k < 4; k++) {
+            size_t n; float *x = synth("OZ7IGY", 12000, 3.0, 682.8125, -26, 40, &n);
+            pi4_spec *s = pi4_spec_build(x, n, 12000, &p);
+            nr = pi4_decode_spec(s, x, n, 12000, &p, r, 4);
+            if (nr && !strcmp(r[0].text, "OZ7IGY")) single++;
+            if (!acc) acc = s; else { CHECK(pi4_spec_add(acc, s) == 0, "spec_add geometry"); pi4_spec_free(s); }
+            free(x);
+        }
+        nr = pi4_decode_spec(acc, NULL, 0, 0, &p, r, 4);
+        CHECK(nr == 1 && !strcmp(r[0].text, "OZ7IGY"), "averaged 4 x -26 dB: %d decodes (%d single-minute decodes)", nr, single);
+        if (nr == 1) CHECK(fabs(r[0].snr_db + 26) < 3.0, "averaged snr %.1f", r[0].snr_db);
+        pi4_spec_free(acc);
+    }
+
     printf(fails ? "test_decode: %d FAILURES\n" : "test_decode: all passed\n", fails);
     return fails != 0;
 }
