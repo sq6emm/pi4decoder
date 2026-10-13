@@ -1,0 +1,14 @@
+# build output
+/build/
+*.o
+*.a
+/pi4decoder
+/pi4gen
+/tests/test_spec
+/tests/test_decode
+/tests/test_noise
+# test audio and benchmark artefacts (large, third party or regenerable)
+/testdata/
+*.wav
+/bench/results/
+/bench/raw/
