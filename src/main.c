@@ -34,7 +34,9 @@ static void usage(void)
         "  --cycles N      Fano cycle budget per attempt (default 200000)\n"
         "  --max-cand N    candidate cells tried (default 12)\n"
         "  --min-sync Z    candidate gate on the sync z-score (default 4.0)\n"
-        "  --verbose       diagnostics on stderr\n");
+        "  --fs HZ         override the WAV sample rate (clock-error experiments)\n"
+        "  --metric K      force an LLR model: 0 rayleigh, 1 bessel, 2 gauss (testing)\n"
+        "  --verbose       diagnostics on stderr (twice: per-symbol dump)\n");
 }
 
 static void json_str(const char *s)

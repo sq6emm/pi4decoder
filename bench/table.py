@@ -15,7 +15,8 @@ GROUND_TRUTH = {"10G": "ED5YAE/B", "28M": "G3ZJO", "432M": "OZ7IGY", "70M": "OZ7
 
 def truth_oz2m(name):
     if name.startswith("70M_1308"): return "IW9GDC/B"
-    return GROUND_TRUTH[name.split("_")[0]]
+    if name.startswith("pi4_cwid_car"): return "OZ7IGY"
+    return GROUND_TRUTH.get(name.split("_")[0])
 
 def parse(path):
     """-> {file: {"decodes": [dict], "user": s, "rss": kB}}"""
@@ -64,6 +65,7 @@ def group_of(f):
     if f.startswith("spread_"): return "Synthetic spread 10-100 Hz, -16 dB"
     if f.startswith("drift_"): return "Synthetic drift 2 Hz, -16 dB"
     if f.startswith("noise_"): return "Synthetic pure noise"
+    if f.startswith("pi4_cwid_car"): return "OZ2M pi4_cwid_car (mp3/mp4 audio)"
     if f.startswith("10G"): return "OZ2M 10 GHz ED5YAE/B (spread)"
     if f.startswith("28M"): return "OZ2M 28 MHz G3ZJO"
     if f.startswith("432M"): return "OZ2M 432 MHz OZ7IGY 2013"

@@ -248,23 +248,6 @@ typedef struct {
     int call;            /* list mode: index of the matched message, -1      */
 } cand;
 
-/* box-sum along frequency: out[h][b] = sum_{k=-r..r} p[h][b+k] */
-static void box_sum(const pi4_spec *s, int w, float *out)
-{
-    int r = w / 2, h, b;
-    for (h = 0; h < s->nhop; h++) {
-        const float *col = s->p + (size_t)h * s->nb;
-        float *o = out + (size_t)h * s->nb;
-        double acc = 0;
-        for (b = 0; b < r && b < s->nb; b++) acc += col[b];
-        for (b = 0; b < s->nb; b++) {
-            if (b + r < s->nb) acc += col[b + r];
-            if (b - r - 1 >= 0) acc -= col[b - r - 1];
-            o[b] = (float)acc;
-        }
-    }
-}
-
 /* robust z-normalisation statistics of a score array */
 /* median and 1.4826*MAD of a (subsampled) score array: immune to a strong
  * signal or interferer occupying a sizeable fraction of the cells */
@@ -316,20 +299,22 @@ static void push_cand(cand *list, int *n, const cand *c)
 
 /* Sync (call < 0) or known-message (call >= 0, tones given) correlation
  * search over one (variant, spread) hypothesis; local maxima above zmin go
- * to the candidate list. sw: box-summed spectrogram for this spread. */
-static void search_cells(const pi4_spec *s, const pi4_params *p, const float *sw,
+ * to the candidate list. The spread window is applied row by row (a box sum
+ * over w bins), so no copy of the spectrogram is needed. */
+static void search_cells(const pi4_spec *s, const pi4_params *p,
                          int v, int w, int call, const uint8_t *tones, double zmin,
                          cand *list, int *ncand)
 {
     int spb = 2 * pi4_variant_k((pi4_variant)v);          /* spacing in bins */
-    int bt0, bt1, hc0, hc1, nbt, nhc, h, b, n;
+    int wb = pi4_spread_bins[w], r = wb / 2;
+    int bt0, bt1, hc0, hc1, nbt, nhc, h, b, n, hmax;
     double fmin, fmax, mean, sd;
-    float *d, *score;
+    float *row, *line, *score;
     cand *local = (cand *)malloc(sizeof(cand) * MAX_CAND); int nlocal = 0;
     band_for(p, &fmin, &fmax, &bt0, &bt1);
     bt0 -= s->b0; bt1 -= s->b0;
-    if (bt0 < pi4_spread_bins[w] / 2 + 1) bt0 = pi4_spread_bins[w] / 2 + 1;   /* no edge-clipped windows */
-    if (bt1 > s->nb - 3 * spb) bt1 = s->nb - 3 * spb;
+    if (bt0 < r + 1) bt0 = r + 1;                          /* no edge-clipped windows */
+    if (bt1 > s->nb - 3 * spb - r) bt1 = s->nb - 3 * spb - r;
     nbt = bt1 - bt0;
     hc0 = (int)floor(p->t_lo_s * PI4_FS / HOP) - s->h0;
     hc1 = (int)ceil(p->t_hi_s * PI4_FS / HOP) - s->h0 + 1;
@@ -338,37 +323,50 @@ static void search_cells(const pi4_spec *s, const pi4_params *p, const float *sw
     nhc = hc1 - hc0;
     if (nbt <= 0 || nhc <= 0) { free(local); return; }
 
-    /* per-symbol discriminant d[h][b]: sync mode: (even pair - odd pair),
-     * list mode: 4/3*P[tone] - 1/3*sum(all four), evaluated per column */
-    d = (float *)malloc(sizeof(float) * (size_t)s->nhop * (size_t)nbt);
+    row = (float *)malloc(sizeof(float) * (size_t)s->nb);
+    line = (float *)malloc(sizeof(float) * (size_t)nbt);
     score = (float *)calloc((size_t)nhc * (size_t)nbt, sizeof(float));
-    if (call < 0) {
-        for (h = 0; h < s->nhop; h++) {
-            const float *col = sw + (size_t)h * s->nb + bt0;
-            float *o = d + (size_t)h * nbt;
-            for (b = 0; b < nbt; b++)
-                o[b] = col[b] + col[b + 2 * spb] - col[b + spb] - col[b + 3 * spb];
-        }
-        for (h = 0; h < nhc; h++) {
-            float *sc = score + (size_t)h * nbt;
-            for (n = 0; n < PI4_NSYM; n++) {
-                const float *dn = d + (size_t)(hc0 + h + SPH * n) * nbt;
-                if (pi4_sync[n]) for (b = 0; b < nbt; b++) sc[b] -= dn[b];
-                else             for (b = 0; b < nbt; b++) sc[b] += dn[b];
+    hmax = hc1 - 1 + SPH * (PI4_NSYM - 1);
+    if (hmax >= s->nhop) hmax = s->nhop - 1;
+    for (h = hc0; h <= hmax; h++) {
+        const float *col = s->p + (size_t)h * s->nb;
+        int nlo = (h - hc1 + 1 + SPH - 1) / SPH, nhi = (h - hc0) / SPH;
+        if (nlo < 0) nlo = 0;
+        if (nhi > PI4_NSYM - 1) nhi = PI4_NSYM - 1;
+        if (nlo > nhi) continue;
+        if (wb == 1) memcpy(row, col, sizeof(float) * (size_t)s->nb);
+        else {                                             /* box sum over wb bins */
+            double acc = 0;
+            for (b = 0; b < r && b < s->nb; b++) acc += col[b];
+            for (b = 0; b < s->nb; b++) {
+                if (b + r < s->nb) acc += col[b + r];
+                if (b - r - 1 >= 0) acc -= col[b - r - 1];
+                row[b] = (float)acc;
             }
         }
-    } else {
-        for (h = 0; h < nhc; h++) {
-            float *sc = score + (size_t)h * nbt;
-            for (n = 0; n < PI4_NSYM; n++) {
-                const float *col = sw + (size_t)(hc0 + h + SPH * n) * s->nb + bt0;
-                int t = tones[n];
+        {
+            const float *c0 = row + bt0;
+            if (call < 0) {
+                /* per-symbol discriminant: (even pair - odd pair) */
+                for (b = 0; b < nbt; b++) line[b] = c0[b] + c0[b + 2 * spb] - c0[b + spb] - c0[b + 3 * spb];
+                for (n = nlo; n <= nhi; n++) {
+                    float *sc = score + (size_t)(h - SPH * n - hc0) * nbt;
+                    if (pi4_sync[n]) for (b = 0; b < nbt; b++) sc[b] -= line[b];
+                    else             for (b = 0; b < nbt; b++) sc[b] += line[b];
+                }
+            } else {
+                /* matched filter: 4/3 P[tone] - 1/3 sum(all four) */
                 for (b = 0; b < nbt; b++)
-                    sc[b] += (4.0f / 3) * col[b + t * spb]
-                           - (1.0f / 3) * (col[b] + col[b + spb] + col[b + 2 * spb] + col[b + 3 * spb]);
+                    line[b] = -(1.0f / 3) * (c0[b] + c0[b + spb] + c0[b + 2 * spb] + c0[b + 3 * spb]);
+                for (n = nlo; n <= nhi; n++) {
+                    float *sc = score + (size_t)(h - SPH * n - hc0) * nbt;
+                    const float *ct = c0 + tones[n] * spb;
+                    for (b = 0; b < nbt; b++) sc[b] += line[b] + (4.0f / 3) * ct[b];
+                }
             }
         }
     }
+    free(row); free(line);
     robust_stats(score, (size_t)nhc * (size_t)nbt, &mean, &sd);
     for (h = 0; h < nhc; h++) {
         const float *sc = score + (size_t)h * nbt;
@@ -401,7 +399,7 @@ static void search_cells(const pi4_spec *s, const pi4_params *p, const float *sw
      * strong interferer cannot crowd out a real signal under another one */
     qsort(local, (size_t)nlocal, sizeof(cand), cand_cmp);
     for (h = 0; h < nlocal && h < CAND_PER_HYP; h++) push_cand(list, ncand, &local[h]);
-    free(d); free(score); free(local);
+    free(score); free(local);
 }
 
 /* ------------------------------------------------------------------ */
@@ -670,7 +668,6 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
                     const pi4_params *p, pi4_result *out, int max_out)
 {
     cand cands[MAX_CAND]; int ncand = 0, i, v, w, nres = 0, tried = 0;
-    float *sw = (float *)malloc(sizeof(float) * (size_t)s->nhop * (size_t)s->nb);
     float (*pw)[4] = (float (*)[4])malloc(sizeof(float) * 4 * PI4_NSYM);
     pi4_result *res = (pi4_result *)calloc((size_t)MAX_CAND, sizeof(pi4_result));
     float *x = NULL; size_t nx = 0;
@@ -693,17 +690,14 @@ int pi4_decode_spec(const pi4_spec *s, const float *audio, size_t n, int fs,
     /* 1. candidate search on three spread windows (1, 5, 17 bins); the
      *    exact window is chosen per candidate afterwards */
     for (w = 0; w < nspread; w += 2) {
-        if (w == 0) memcpy(sw, s->p, sizeof(float) * (size_t)s->nhop * (size_t)s->nb);
-        else box_sum(s, pi4_spread_bins[w], sw);
         for (v = 0; v < 4; v++) {
             if (!(p->variants & (1u << v))) continue;
             if (pi4_spread_bins[w] >= 2 * pi4_variant_k((pi4_variant)v)) continue;
-            search_cells(s, p, sw, v, w, -1, NULL, p->min_sync_z, cands, &ncand);
+            search_cells(s, p, v, w, -1, NULL, p->min_sync_z, cands, &ncand);
             for (i = 0; i < p->ncalls; i++)
-                search_cells(s, p, sw, v, w, i, ctones[i], p->list_min_z, cands, &ncand);
+                search_cells(s, p, v, w, i, ctones[i], p->list_min_z, cands, &ncand);
         }
     }
-    free(sw); sw = NULL;
     if (p->verbose) fprintf(stderr, "search: %d candidates, %.3f s\n", ncand, (double)(clock() - t_start) / CLOCKS_PER_SEC);
     qsort(cands, (size_t)ncand, sizeof(cand), cand_cmp);
     if (p->verbose)
